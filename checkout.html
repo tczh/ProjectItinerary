@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body style="background-color: rgb(233, 233, 233);" id="body_class">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+
+    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+        <!-- Navbar content -->
+        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your
+                itineraries come to life</em>
+        </a>
+
+        <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
+            <span class='navbar-toggler-icon'></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="myMenu">
+            <div class='navbar-nav'>
+                <!-- Need to update href links when they are ready-->
+                <a class='nav-item nav-link text-white' href=index.php>Home</a>
+                <a class='nav-item nav-link text-white' href=about.php>About</a>
+                <div id='profile'></div>
+                <div id='createitinerary'></div>
+                <div id='cart'></div>
+                <a class='nav-item nav-link text-white' href="#" id="logout"></a>
+
+               
+                <script>
+                    var emptyHtml = '';
+                    var createitinerary = '';
+                    var cart = '';
+                    if (sessionStorage['userid']) {
+                        console.log(sessionStorage['userid']);
+                        // sessionStorage.clear();
+                        emptyHtml += `<a class='nav-item nav-link text-white' id="profilepage" href='ProfilePage.php'>Profile</a>
+                        `;
+                        createitinerary += `<a class='nav-item nav-link text-white' id="createitinerary" href='create_itinerary.html'>Create Itinerary</a>`;
+                        cart += `<a class='nav-item nav-link text-white' id="cart" href='checkout.html'>Cart</a>`;
+                        document.getElementById('profile').innerHTML = emptyHtml;
+                        document.getElementById('createitinerary').innerHTML = createitinerary;
+                        document.getElementById('cart').innerHTML = cart;
+                        document.getElementById("logout").setAttribute('href', "objects/ProcessLogout.php");
+                        document.getElementById("logout").innerText = "Logout";
+                        document.getElementById("body_class").setAttribute("onload", "display_store()");
+
+                    }
+                </script>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- shopping cart header -->
+
+
+    <div class="container" style="background-color: rgb(150, 150, 151); color: white; padding: 5px; margin-top: 68px;">
+        <div class="row">
+            <div class="col">
+                <h4>Your shopping cart</h4>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- ---------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- Header of Itineraries -->
+
+    <div id='itinerary_body'>
+
+        <div class="container" style="margin-top:20px; background-color: white; font-size: 18px;">
+            <div class="row">
+                <div class="col-8" style="padding: 10px;">
+                    <input type="checkbox" id="all_itineraries" onclick="select_all()" value="0">&nbsp&nbsp&nbsp
+                    <label for="all_itineraries" style="font-weight: bold; ">Itineraries</label>
+                </div>
+
+                <div class="col-2" style="padding: 10px; font-weight: bold;">
+                    Price ($)
+                </div>
+                <div class="col-2" style="padding: 10px; font-weight: bold;">
+                    Action
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- New Store 1 -->
+    <div id="all_storeitems"></div>
+    <br>
+
+
+
+
+    <!-- <footer> -->
+    <div id="itinerary_body2">
+
+        <div style="position: sticky;bottom: 0;">
+            <div class="container shadow-sm p-3 mb-5"
+                style="background-color:rgb(36, 36, 51); color: white; padding: 15px; overflow: hidden;">
+                <div class="form-row">
+                    <div class="col-8">
+                        <h4>Total</h4>
+                        Total Itineraries= <span id="total_number">0</span>
+                    </div>
+
+                    <div class="col-2" style="padding: 20px 10px 20px 10px;" id="total_amount">
+                        0.00
+                    </div>
+
+                    <div class="col-sm-2" style="padding: 20px 10px 20px 10px; ">
+                        <button type="button" class="btn btn-outline-secondary"
+                            onclick="checkout_button(); window.location.href='payment.html'">
+                            Checkout</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+    <script src="checkout.js"></script>
+
+    <!-- <script>
+        if (!sessionStorage['userid']) {
+            document.getElementById('itinerary_body').innerHTML = "";
+            document.getElementById('itinerary_body2').innerHTML = `
+            <div class="jumbotron jumbotron-fluid" >
+                <div class="container" style="text-align: center;">
+                    <h1 class="display-6">Please log into your account to view your cart</h1>
+                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='#'">Login here</button>
+                   
+                </div>
+            </div>`;
+
+        }
+    </script> -->
+
+
+
+    <footer class="footer bg-dark">
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/timothy-chia-a23858100/"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+        <p>Copyright &copy; 2020 - Tim's Travel Agent</p>
+    </footer>
+
+
+    <style>
+        .motto {
+            font-style: italic;
+            font-size: 15px;
+            margin-left: 5px;
+        }
+
+        .navbar {
+            opacity: 0.8;
+            position: fixed;
+            top: 0px;
+        }
+
+
+
+        .navbar.top {
+            background: transparent;
+        }
+
+        .navbar-nav a:hover {
+            border-bottom: #f0ad4e 2px solid;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 200px;
+        }
+
+        .footer a {
+            color: #fff;
+        }
+
+        .footer a:hover {
+            color: #f0ad4e;
+        }
+
+        .footer .social>* {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .bg-dark {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+
+
+
+</body>
+
+
+</html>
