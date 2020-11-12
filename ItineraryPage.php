@@ -74,7 +74,7 @@
                     }
                 
                 ?>
-                
+                {{error2}} {{error3}}
                 <img v-bind:src="thumbnail" style="width:100%;height:200px;object-fit:cover">
                 <h1>{{title}}</h1>
                 <h5>Experience {{country}} in <span class="font-italic">{{season}}</span></h5>
@@ -156,7 +156,7 @@
                 <div class='mt-5'>
         
                     <h5 v-if="userid1 ==0">Interested in finding out more? <a href="login.php">Click here</a> to add this itinerary to your cart now!!</a></h5>
-                    <h5 v-else>Interested in finding out more? <a href="checkout.html" v-on:click='insertCart()'>Click here</a> to add this itinerary to your cart now!!</a></h5>
+                    <h5 v-else-if="error2 == '1' && error3 =='1'">Interested in finding out more? <a href="checkout.html" v-on:click='insertCart()'>Click here</a> to add this itinerary to your cart now!!</a></h5>
                 </div>
             </div>
             <div class="col-sm-4 text-center" style="background:white;" v-if="error != '1'">
@@ -177,8 +177,8 @@
                             Price: {{price}}
                         </p>
                         <a href="login.php" class="btn btn-warning p-2" style="font-size:14px" v-if="userid1 ==0">ADD TO CART <i class="fa fa-cart-plus"></i></a>
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else v-on:click="insertCart()">ADD TO CART <i class="fa fa-cart-plus"></i></button>
-              
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else-if="error2 == '1' && error3 =='1'" v-on:click="insertCart()">ADD TO CART <i class="fa fa-cart-plus"></i></button>
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else disabled>ADD TO CART <i class="fa fa-cart-plus"></i></button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -214,24 +214,21 @@
                 </div>
                 <div v-else>
                     <div class='style2 text-left p-3 ' v-for="comments in commentsArray">
-                        
-                        
                         <h5>
                             {{comments['userid']}} &nbsp
                             
                             <span v-for="i in parseInt(comments['rate'])" style='font-size:14px'>
                                 <i class='fa fa-star fa-lg' style='color:yellow'></i>
                             </span>
-                            <span style='float:right'>
-                                <a><i class='fa fa-thumbs-o-up'></i></a>
-                            </span>
+
                         </h5>
                         
                         <div class='mt-3'>
                             {{comments['message']}}
+                        
                         </div>
                         <div class='text-right' style='font-size:11px;font-variant:small-caps'>
-                            <span style='color:grey'>11 November 2020</span>
+                            <span style='color:grey'>{{comments['date']}}</span>
                         </div>
                         <hr>
                     </div>
@@ -264,7 +261,9 @@
                 lat1:'',
                 lng1:'',
                 rate:0,
-                error1:''
+                error1:'',
+                error2:'',
+                error3:'',
                 
             },
             created:function(){
@@ -336,6 +335,22 @@
                 
                 if (this.userid1 != 0){
                     console.log('if user exists do api call for addcart table !! TO DO !! Check also if is creator or is already bought')
+                    url = "api/itinerarydetails/getBoughtItineraryHeader.php?itineraryid=" + this.itineraryid + "&userid=" + this.userid1
+                    axios.get(url)
+                    .then(response =>{
+                        console.log(response)
+                    }).catch(error =>{
+                        this.error2="1"
+                    })
+
+                    url = "api/itinerarydetails/getItineraryHeader.php?itineraryid=" + this.itineraryid + "&userid=" + this.userid1
+                    axios.get(url)
+                    .then(response =>{
+                        console.log(response)
+                    }).catch(error =>{
+                        this.error3="1"
+                    })
+                    
                 }
     
             },
