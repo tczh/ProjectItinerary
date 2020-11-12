@@ -36,8 +36,14 @@
                 <div id='cart'></div>
                 <a class='nav-item nav-link text-white' href="#" id="logout"></a>
 
+                
+
                
                 <script>
+
+                    console.log('hi');
+                    console.log(sessionStorage['userid']);
+
                     var emptyHtml = '';
                     var createitinerary = '';
                     var cart = '';
@@ -67,7 +73,6 @@
 
 
 
-
     <!-- shopping cart header -->
 
 
@@ -79,7 +84,6 @@
 
         </div>
     </div>
-
 
 
 
@@ -148,22 +152,6 @@
 
 
     <script src="checkout.js"></script>
-
-    <!-- <script>
-        if (!sessionStorage['userid']) {
-            document.getElementById('itinerary_body').innerHTML = "";
-            document.getElementById('itinerary_body2').innerHTML = `
-            <div class="jumbotron jumbotron-fluid" >
-                <div class="container" style="text-align: center;">
-                    <h1 class="display-6">Please log into your account to view your cart</h1>
-                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='#'">Login here</button>
-                   
-                </div>
-            </div>`;
-
-        }
-    </script> -->
-
 
 
     <footer class="footer bg-dark">

@@ -1,7 +1,6 @@
 // display all the add to cart items
 function display_store() {
-    userid = sessionStorage.getItem('userid');
-
+    // userid = sessionStorage.getItem('userid');
     console.log("yo");
 
     var request = new XMLHttpRequest();
@@ -113,7 +112,7 @@ function display_store() {
     }
 
     //var url = "api/Cart/Cart_itinerary_details.php?userid=" + userid; //need to change the username based on the session later!
-    var url = "http://localhost/groupproject/api/cart/cart_itinerary_details.php?userid=" + userid;
+    var url = "api/Cart/Cart_itinerary_details.php?userid=" +userid ;
     request.open("GET", url, true);
     request.send();
 
