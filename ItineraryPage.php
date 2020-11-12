@@ -66,8 +66,6 @@
                 <?php 
                     session_start();
                     $itineraryid= $_GET['itineraryid'];
-                    // remove this line later!!
-                    $_SESSION['email'] = '123';
                     if(isset($_GET['userid']) && isset($_SESSION['email'])){
                         $userid = $_GET['userid'];
                     }
