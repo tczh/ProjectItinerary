@@ -260,9 +260,14 @@ function submit_payment() {
         document.getElementById('year').style.backgroundColor = "rgb(255, 218, 218)";
         document.getElementById('month').style.backgroundColor = "rgb(255, 218, 218)";
     }
+    else{
+        count+=1;
+        document.getElementById("year").style.backgroundColor = "white";
+        document.getElementById("month").style.backgroundColor = "white";
+    }
 
 
-    if (count == 8) {
+    if (count == 9) {
         console.log(checkout_items);
 
         var request = new XMLHttpRequest();
@@ -293,9 +298,9 @@ function submit_payment() {
                 {
                     "StoreDetails": {
                         "Name": "Tim's Travel Agency",
-                        "LogoUrl": "https://www.oxebox.com/assets/images/store_logo/store_5bfbb2b7b1863.png",
+                        "LogoUrl": "https://cdn0.iconfinder.com/data/icons/octicons/1024/globe-512.png",
                         "TaxDetails": "",
-                        "Phone": "+18008563275",
+                        "Phone": "+65 6565 7799",
                         "ReceiptHeader": "Welcome to Tim's Travel Agency",
                         "ReceiptFooter": "Thanks for your purchasing with us!!!"
                     },
@@ -332,7 +337,7 @@ function submit_payment() {
                 },
 
                 "StorePromotions": {
-                    "OfferImage": "https://www.oxebox.com/assets/images/store_promo/promo_5a66a9fae0c2d.png",
+                    "OfferImage": "https://www.awcberlin.org/wp-content/uploads/2019/02/ce-travel.jpg",
                     "facebook_link": "#",
                     "twitter_link": "#",
                     "instagram_link": "#",
@@ -387,7 +392,7 @@ function submit_payment() {
                     console.log(email);
                     ispaid = 1;
                     console.log(ispaid);
-                    var url ="http://localhost/groupproject/api/Cart/Cart_buy.php?paymentid=" + paymentid + "&userid=" + userid + "&itineraryowner=" + checkout_items[item]['itineraryowner'] + "&itineraryid=" + item + "&ispaid=" + ispaid + "&billingemail=" + email; //need to change the username based on the session later!
+                    var url ="api/Cart/Cart_buy.php?paymentid=" + paymentid + "&userid=" + userid + "&itineraryowner=" + checkout_items[item]['itineraryowner'] + "&itineraryid=" + item + "&ispaid=" + ispaid + "&billingemail=" + email; //need to change the username based on the session later!
                     //var url = "api/Cart/Cart_buy.php?paymentid=" + paymentid + "&userid=" + userid + "&itineraryowner=" + checkout_items[item]['itineraryowner'] + "&itineraryid=" + item + "&ispaid=1&billingemail=" + email; //need to change the username based on the session later!
                     request.open("GET", url, true);
                     request.send();
@@ -416,7 +421,7 @@ function submit_payment() {
                         }
                     }
                     console.log(item);
-                    var url = "localhost/groupproject/api/Cart/itinerary_purchased.php?itineraryid=" + item;
+                    var url = "api/Cart/itinerary_purchased.php?itineraryid=" + item;
                     //var url = "api/Cart/itinerary_purchased.php?itineraryid=" + item;" //need to change the username based on the session later!
                     request.open("GET", url, true);
                     request.send();
@@ -434,7 +439,7 @@ function submit_payment() {
                         }
                     }
 
-                    var url = "localhost/groupproject/api/Cart/itinerary_activities.php?itineraryid=" + item; 
+                    var url = "api/Cart/itinerary_activities.php?itineraryid=" + item; 
                     //var url = "api/Cart/itinerary_activities.php?itineraryid=" + item; "//need to change the username based on the session later!
                     request.open("GET", url, true);
                     request.send();
@@ -481,8 +486,8 @@ function submit_payment() {
                 Thank you for shopping at Tim's Travel Agency. Your receipt will be spent to your billing email address. 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" ><a href="index.php">Back to home page</a></button>
-            <button type="button" class="btn btn-primary"><a href="#">Go to My Itinerary </a></button>
+              <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php'">Back to home page</a></button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='checkout.html'">Go to My Cart</a></button>
             </div>
           </div>
         </div>
@@ -532,7 +537,7 @@ function insert_function(xml) {
         }
     }
 
-    var url = "localhost/groupproject/api/Cart/itinerary_insert.php?userid=" + userid + "&itineraryid=" + response_json.records[0].itineraryid + "&itineraryowner=" + response_json.records[0].itineraryowner + "&tourtitle=" + response_json.records[0].tourtitle + "&tourcategory=" + response_json.records[0].tourcategory + "&country=" + response_json.records[0].country + "&price=" + response_json.records[0].price + "&thumbnail=" + response_json.records[0].thumbnail + "&season=" + response_json.records[0].season; //need to change the username based on the session later!
+    var url = "api/Cart/itinerary_insert.php?userid=" + userid + "&itineraryid=" + response_json.records[0].itineraryid + "&itineraryowner=" + response_json.records[0].itineraryowner + "&tourtitle=" + response_json.records[0].tourtitle + "&tourcategory=" + response_json.records[0].tourcategory + "&country=" + response_json.records[0].country + "&price=" + response_json.records[0].price + "&thumbnail=" + response_json.records[0].thumbnail + "&season=" + response_json.records[0].season; //need to change the username based on the session later!
     //var url = "api/Cart/itinerary_insert.php?userid=" + userid + "&itineraryid=" + response_json.records[0].itineraryid + "&itineraryowner=" + response_json.records[0].itineraryowner + "&tourtitle=" + response_json.records[0].tourtitle + "&tourcategory=" + response_json.records[0].tourcategory + "&country=" + response_json.records[0].country + "&price=" + response_json.records[0].price + "&thumbnail=" + response_json.records[0].thumbnail + "&season=" + response_json.records[0].season; //need to change the username based on the session later!
     request.open("GET", url, true);
     request.send();
