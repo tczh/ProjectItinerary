@@ -74,7 +74,7 @@
                     }
                 
                 ?>
-                {{error2}} {{error3}}
+
                 <img v-bind:src="thumbnail" style="width:100%;height:200px;object-fit:cover">
                 <h1>{{title}}</h1>
                 <h5>Experience {{country}} in <span class="font-italic">{{season}}</span></h5>
