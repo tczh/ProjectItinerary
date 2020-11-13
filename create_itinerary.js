@@ -23,6 +23,7 @@ var is_image = function () {
 
 var errorCallback = function () {
   alert('Image did not exist. Input a valid image url');
+  sessionStorage.setItem("imageExists", "false");
 
   // var el = document.getElementById("error-body");
   // el.innerHTML = 'Image does not exist. Provide a valid image url';
@@ -33,6 +34,7 @@ var errorCallback = function () {
 
 var loadCallback = function () {
   alert('Image exists. Thank you.');
+  sessionStorage.setItem("imageExists", "true");
 
   // var el = document.getElementById("error-body");
   // el.innerHTML = 'Image exists. Thank you.';
@@ -175,13 +177,14 @@ function addNewDay(day) {
     var html = `
             <div class="container bg-light" id="contentDay${day}">
 
+              <!--12/11-->
               <div class="form-group" style="margin: 20px 0px;">
                 <div class="container">
                     <label class="h2 dayNum" >Day ${day}</label>
                     <button type="button" class="btn btn-warning m-3" id="removeDay${day}" value="${day}" onclick="removeElement(${day})" style="display: inline-block;">Remove</button>
                 </div>
-                <input type="date" class="form-control date" placeholder="">
               </div>
+            <!--end of 12/11-->
 
               <!--start of container of activities for day-->
               <div class="container" id="activitiesDay${day}">
