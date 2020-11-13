@@ -15,6 +15,7 @@
         public $price;
         public $thumbnail;
         public $season;
+        public $generaldetails;
 
         // constructor with $db as database connection
         public function __construct($db) {
@@ -24,9 +25,9 @@
         public function InsertItinerary(){
             $query = "INSERT
             INTO
-                itinerary (itineraryowner, tourtitle, tourcategory, country, price, thumbnail,season)
+                itinerary (itineraryowner, tourtitle, tourcategory, country, price, thumbnail,season, generaldetails)
             VALUES
-                (:itineraryowner ,:tourtitle, :tourcategory, :country, :price, :thumbnail, :season)
+                (:itineraryowner ,:tourtitle, :tourcategory, :country, :price, :thumbnail, :season, :generaldetails)
             ";
 
             $stmt = $this->conn->prepare($query);
@@ -38,6 +39,7 @@
             $stmt->bindParam(':price', $this->price);
             $stmt->bindParam(':thumbnail', $this->thumbnail);
             $stmt->bindParam(':season', $this->season);
+            $stmt->bindParam(':generaldetails', $this->generaldetails);
 
             $result = $stmt->execute();
 
