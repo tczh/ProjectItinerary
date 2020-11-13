@@ -123,11 +123,13 @@
         </div>
       </nav> -->
 
-      <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+      <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-lg">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your
-                itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+          <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+          <span class="text-warning">Tim's</span> Travel Agent
+          <!-- <small>Where your itineraries come to life</small> -->
+          <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
         <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
@@ -247,6 +249,14 @@
                       </div>
                     </div>
                   </div>
+                  
+                  <!--summary - 12/11-->
+                  <div class="form-group row">
+                    <label for="description-input" class=" col-sm-2 col-form-label" >Summary</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="generaldetails" value="" placeholder="This summary would be used to give users a preview of your itinerary before purchasing." rows="5"></textarea>
+                    </div>
+                  </div>
 
 
                   <!--Upload Image-->
@@ -278,7 +288,6 @@
 
               <div class="form-group" style="margin: 20px 0px;">
                 <label class="h2 dayNum">Day 1</label>
-                <input type="date" class="form-control date" placeholder="" id="day1Date">
               </div>
 
               <!--start of container of activities for day 1-->
@@ -340,7 +349,7 @@
     </div>
 
     <!--start of container for price input and confrim btn-->
-    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0;">
+    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0; margin-left: 0px; background-color:  #023047;">
 
           <form>
             <div class="form-row ">
@@ -351,7 +360,7 @@
                 <label class="sr-only" for="price">price</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text">$</div>
+                    <div class="input-group-text">SGD $</div>
                   </div>
                   <input type="number" min="0" class="form-control" id="price" placeholder="price">
                 </div>
