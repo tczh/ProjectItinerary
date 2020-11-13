@@ -12,6 +12,12 @@ function validateData() {
     if (title.length  == 0) {
         errors.push("Title of itinerary is empty. </br>");
     }
+    
+    //12/11
+    var generaldetails = document.getElementById("generaldetails").value;
+    if (generaldetails.length  == 0) {
+        errors.push("Summary of itinerary is empty. </br>");
+    }
 
 
     // if (imageURL.length  == 0) {
@@ -26,7 +32,7 @@ function validateData() {
         errors.push("Select a category. </br>")
     };
 
-    var day1_date = document.getElementById("day1Date").value;
+    
 
     var price = document.getElementById("price").value;
     if (checkPrice(price)) {
@@ -49,7 +55,7 @@ function validateData() {
     //var description = day1_el.getElementsByClassName("description");
 
     var list_to_check = [activity_titles, startTime, endTime, location];
-    if (checkEmpty(list_to_check) || day1_date.length == 0) {
+    if (checkEmpty(list_to_check)) {
         errors.push("Do not leave any information blank (excluding description)! </br>");  
     }
 
@@ -187,9 +193,17 @@ function storeItinerary() {
     var country = document.getElementById("country-select").value;
     var price = document.getElementById("price").value;
     var imageURL = document.getElementById("imageUrl").value;
-    if (imageURL.length == 0 ) {
+    //12/11
+    var generaldetails = document.getElementById("generaldetails").value;
+
+    var imageExists = sessionStorage.getItem("imageExists");
+    console.log("ImageExists in session storage: " + imageExists);
+    if (imageURL.length == 0 || imageExists == 'false') {
         imageURL = "/images/travel.jpg";
     } ;
+
+    //end of 12/11
+
     var thumbnail = imageURL;
     var season = document.querySelector('input[name="season"]:checked').value;
 
@@ -203,7 +217,7 @@ function storeItinerary() {
     console.log(season);
     console.log("------------");
 
-    InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price, thumbnail,season);
+    InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price, thumbnail,season, generaldetails);
 
     //finish inserting values into Itinerary table
 
@@ -217,7 +231,7 @@ function storeItinerary() {
 };
 
 
-function InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price, thumbnail,season) {
+function InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price, thumbnail,season, generaldetails) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -226,7 +240,7 @@ function InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price,
         }
     }
 
-    var url = `http://localhost/groupproject/api/Itinerary/InsertItinerary.php?itineraryowner=${itineraryOwner}&tourtitle=${tourTitle}&tourcategory=${tourCategory}&country=${country}&price=${price}&thumbnail=${thumbnail}&season=${season}`; //need to change the username based on the session later!
+    var url = `http://localhost/groupproject/api/Itinerary/InsertItinerary.php?itineraryowner=${itineraryOwner}&tourtitle=${tourTitle}&tourcategory=${tourCategory}&country=${country}&price=${price}&thumbnail=${thumbnail}&season=${season}&generaldetails=${generaldetails}`; 
     request.open("GET", url, true);
     request.send();
 
