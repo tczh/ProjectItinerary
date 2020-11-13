@@ -9,11 +9,8 @@
 
 
 <script>
-console.log('hi');
-console.log(sessionStorage['userid']);
 sessionStorage.clear();
-console.log(sessionStorage['userid']);
-
+window.location.replace("../index.php")
 
 </script>
     
@@ -25,7 +22,7 @@ console.log(sessionStorage['userid']);
     );
     session_start();
     session_destroy();
-    header("Location: ../index.php");
+    
 ?>
 
 
@@ -34,10 +31,3 @@ console.log(sessionStorage['userid']);
 </body>
 
 </html>
-
-
-
-
-
-
-
