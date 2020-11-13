@@ -16,6 +16,9 @@
             background-color: #dbdbf0;
         }
         
+        .style2{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
 
         #map {
             height: 300px;
@@ -74,7 +77,6 @@
                     }
                 
                 ?>
-
                 <img v-bind:src="thumbnail" style="width:100%;height:200px;object-fit:cover">
                 <h1>{{title}}</h1>
                 <h5>Experience {{country}} in <span class="font-italic">{{season}}</span></h5>
@@ -137,7 +139,11 @@
                     <span class='highlight'>Itinerary created by {{owner}}</span>
                 </div>
                 <hr>
-                
+                <h3>Summary</h3>
+                <div class ='card mt-3 mb-5 p-3 style2' style='width: 70%'>
+                    {{summary}}
+                </div>
+                <hr>
             </div>
             <div class="col-sm-8 text-center" v-if="error != '1'">
                 <h3>Activities for Day 1</h3>
@@ -213,7 +219,7 @@
                     This itinerary has not been reviewed yet :(
                 </div>
                 <div v-else>
-                    <div class='style2 text-left p-3 ' v-for="comments in commentsArray">
+                    <div class='text-left p-3 ' v-for="comments in commentsArray">
                         <h5>
                             {{comments['userid']}} &nbsp
                             
@@ -264,6 +270,7 @@
                 error1:'',
                 error2:'',
                 error3:'',
+                summary:'',
                 
             },
             created:function(){
@@ -278,6 +285,7 @@
                     this.thumbnail = post_array['thumbnail']
                     this.category = post_array['tourcategory']
                     this.title = post_array['tourtitle']
+                    this.summary = post_array['generaldetails']
                     url2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + this.country+ "&key=" + this.apiKey
                     axios.get(url2)
                     .then(response =>{
@@ -286,7 +294,7 @@
                         this.lng1 = post_array2['lng']
                         initMap(this.lat1,this.lng1)
                     }).catch(error =>{
-                        this.error="1"
+                        this.error="2"
                     })
             
                 }).catch(error =>{
@@ -334,7 +342,6 @@
                 
                 
                 if (this.userid1 != 0){
-                    console.log('if user exists do api call for addcart table !! TO DO !! Check also if is creator or is already bought')
                     url = "api/itinerarydetails/getBoughtItineraryHeader.php?itineraryid=" + this.itineraryid + "&userid=" + this.userid1
                     axios.get(url)
                     .then(response =>{
