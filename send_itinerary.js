@@ -240,7 +240,7 @@ function InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price,
         }
     }
 
-    var url = `http://localhost/groupproject/api/Itinerary/InsertItinerary.php?itineraryowner=${itineraryOwner}&tourtitle=${tourTitle}&tourcategory=${tourCategory}&country=${country}&price=${price}&thumbnail=${thumbnail}&season=${season}&generaldetails=${generaldetails}`; 
+    var url = `api/Itinerary/InsertItinerary.php?itineraryowner=${itineraryOwner}&tourtitle=${tourTitle}&tourcategory=${tourCategory}&country=${country}&price=${price}&thumbnail=${thumbnail}&season=${season}&generaldetails=${generaldetails}`; 
     request.open("GET", url, true);
     request.send();
 
@@ -262,7 +262,7 @@ function retrieveItineraryId(){
     };
     
 
-    request.open("GET", "http://localhost/groupproject/api/Itinerary/RetrieveMaxItinerary.php" , true);
+    request.open("GET", "api/Itinerary/RetrieveMaxItinerary.php" , true);
     console.log(request);
     request.send();
 }
@@ -341,7 +341,7 @@ function InsertDetail(itineraryid, itineraryowner,daynumber, location, activity,
         }
     }
 
-    var url = `http://localhost/groupproject/api/Itinerary/InsertItineraryDetails.php?itineraryid=${itineraryid}&itineraryowner=${itineraryowner}&daynumber=${daynumber}&location=${location}&activity=${activity}&activitynumber=${activitynumber}&description=${description}&starttime=${starttime}&endtime=${endtime}`;
+    var url = `api/Itinerary/InsertItineraryDetails.php?itineraryid=${itineraryid}&itineraryowner=${itineraryowner}&daynumber=${daynumber}&location=${location}&activity=${activity}&activitynumber=${activitynumber}&description=${description}&starttime=${starttime}&endtime=${endtime}`;
     request.open("GET", url, true);
     request.send();
 }

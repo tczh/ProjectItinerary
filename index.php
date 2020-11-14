@@ -96,13 +96,16 @@
     
     <!-- Navbar collapse if width is sm-->
     <header class="hero">
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-md">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark navbar-expand-md" style="background-color: #023047;">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-        <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
-        <button class='navbar-toggler' data-toggle ='collapse' data-target='#myMenu'>
+        <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
             <span class='navbar-toggler-icon'></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="myMenu">
@@ -115,16 +118,18 @@
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
                 }
                 else {
-                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
+                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>
+                    <a class='nav-item nav-link text-white' href='create_itinerary.html'>Create Itinerary</a>";
                 }
                 ?>
-                <a class='nav-item nav-link text-white' href=#>Cart</a>
+                <a class='nav-item nav-link text-white' href='checkout.html'>Cart</a>
 
                 <?php
                     if (isset($_SESSION["userid"])) {
                         echo "<a class='nav-item nav-link text-white' href='objects/ProcessLogout.php'>Log Out</a>";
                     }
                 ?>
+
 
             </div>
         </div>
@@ -138,36 +143,6 @@
                 <label id="searchText" class="">Find your dream itinerary!</label>
                 <input id="locationInput" class="form-control mb-3" type="search" placeholder="Enter Your Dreamland (Country)" aria-label="Search">
                 
-                <!--Days box & Price Range box-->
-                <!-- <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Days</span>
-                    </div>
-
-                    <input type="text" class="form-control" placeholder="Enter Price Range" aria-label="days" aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Price Range</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Price Range" aria-label="price" aria-describedby="basic-addon2">
-                </div> -->
-
-                <!-- Price Range -->
-                <!-- <div class="form-group">
-                    <label for="formControlRange">Price Range</label>
-                    <div class="row dual-form" id="price-range">
-                        <div class="col-9">
-                            <input type="range" class="form-control-range" name="rangeInput" min="0" max="100" onchange="updateTextInput(this.value);">
-                        </div>
-                        <div class="col-1"></div>
-                        <input type="text" class="form-control col-2" id="textInput" value="">
-                    </div>
-                </div> -->
-                
-                <!-- <div class="input-group input-daterange">
-                    <input type="text" class="form-control" value="2012-04-05">
-                    <div class="input-group-addon">to</div>
-                    <input type="text" class="form-control" value="2012-04-19">
-                </div> -->
 
                 <div class="form-group">
                     <select class="form-control" id="pricerange">
@@ -181,30 +156,7 @@
                     </select>
                 </div>
 
-                <!-- Date Range -->
-                <!-- <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Date Range</span>
-                    </div>
-                    <input type="text" class="form-control" id="daterange" name="daterange" value="11/11/2020 - 11/30/2020">
-                </div> -->
-
-                <!-- <div class="form-group">
-                    <select class="form-control" id="month">
-                        <option>Month</option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>November</option>
-                        <option>December</option>
-                    </select>
-                </div> -->
+            
 
                 <div class="form-group">
                     <select class="form-control" id="season">
@@ -233,44 +185,7 @@
     </div>
     </header>
 
-    <!-- <div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img class="d-block w-100" src="images/Australia.jpg" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100" src="images/Bangkok.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100" src="images/California.jpg" alt="Third slide">
-                </div>
-            </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div> -->
-    <!-- <div id="categories"> -->
-        <!-- <span class="badge badge-pill badge-info">Luxury</span>
-        <span class="badge badge-pill badge-info">Budget</span>
-        <span class="badge badge-pill badge-info">Nature</span>
-        <span class="badge badge-pill badge-info">City</span>
-        <span class="badge badge-pill badge-info">Others</span> -->
-
-        <!-- <button type="button" class="btn btn-info categories" onclick="filterCategory('luxury')">Luxury</button>
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('budget')">Budget</button>
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('nature')">Nature</button>
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('city')">City</button>
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('others')">Others</button> -->
-    <!-- </div> -->
     
     <div id="cards">
     <?php
@@ -301,54 +216,12 @@
                 "season" => $season
             ];
             
-            // echo '
-            // <div class="card">
-            //     <img class="card-img-top" src="images/';
-            //     echo $thumbnail;
-            //     echo'" alt="';
-            //     echo $tourtitle;
-            //     echo '">
-            //     <div class="card-body">
-            //         <h5 class="card-title">';
-            //         echo $tourtitle;
-            //         echo '</h5>
-            //         <p class="card-text">Price: $';
-            //         echo $price;
-            //         echo '</p>
-            //         <a href="#" class="btn btn-warning">View More</a>
-            //     </div>
-            // </div>
-            // ';
+            
         }
-        // echo '</div>
-        // ';
-
-        // echo json_encode($itineraryArray);
-        // header("Location: objects/ProcessItinerary.php?itineraryid=$itineraryid&itineraryowner=$itineraryowner&tourtitle=$tourtitle&tourcategory=$tourcategory&country=$country&price=$price&thumbnail=$thumbnail&season=$season");
-        // header("Location: objects/ProcessItinerary.php?itineraries=$itineraryArray");
-
-        // var_dump($itineraries);
+        
     ?>
 
-    <!-- snip -->
-        <!-- <script>
-            function reqListener () {
-            console.log(this.responseText);
-            }
 
-            var oReq = new XMLHttpRequest(); // New request object
-            oReq.onload = function() {
-                // This is where you handle what to do with the response.
-                // The actual data is found on this.responseText
-                alert(this.responseText); // Will alert: 42
-            };
-            oReq.open("get", "get-data.php", true);
-            //                               ^ Don't block the rest of the execution.
-            //                                 Don't wait until the request finishes to
-            //                                 continue.
-            oReq.send();
-        </script> -->
-    <!-- snip -->
     </div>
 
 
@@ -357,10 +230,10 @@
     <div id="nextback">
         <button class="btn btn-warning" id="backbtn" disabled onclick="back()">Back</button>
         <button class="btn btn-warning" id="nextbtn" onclick="next()">Next</button>
-    </div
+    </div>
 
     <!--Footer-->
-    <footer class="footer bg-dark">
+    <footer class="footer" style="background-color: #023047;color:white;">
       <div class="social">
         <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
         <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
@@ -372,26 +245,7 @@
 
     <div id='counter' class='d-none'>0</div>
     
-    <!-- <script>
-        const navbar = document.getElementById('navbar');
-        let scrolled = false;
-
-        window.onscroll = function () {
-            if (window.pageYOffset > 100) {
-            navbar.classList.remove('top');
-            if (!scrolled) {
-                navbar.style.transform = 'translateY(-70px)';
-            }
-            setTimeout(function () {
-                navbar.style.transform = 'translateY(0)';
-                scrolled = true;
-            }, 200);
-            } else {
-            navbar.classList.add('top');
-            scrolled = false;
-            }
-        };
-    </script> -->
+   
 
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqsd6B8t6d8EIDIhtISazAvVufIy07_-U&libraries=places&callback=load"></script>
     <!-- <script src="js/lightbox.min.js"></script> -->
@@ -418,10 +272,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
     var jsItineraryWithoutRate = <?php echo json_encode($itineraryArray); ?>;
-    // var obj = JSON.parse(obj);
-    // console.log(jsItineraryWithoutRate);
 
-    // jsItinerary = []
     rateArray = []
     for (itinerary of jsItineraryWithoutRate) {
         // console.log(itinerary);
@@ -455,14 +306,7 @@
 
             console.log(rate);
 
-            // itinerary['rate'] = rate;
-
-            // console.log(itinerary);
-            
-            // jsItinerary.push(itinerary);
-
-            // console.log(jsItinerary)
-            // document.getElementById('rateArray').innerHTML = rateArray;
+           
         })
     }
 
@@ -482,7 +326,6 @@
 
     console.log(jsItinerary);
 
-    // console.log(rateArray);
 
     function load() {
         var input = document.getElementById("locationInput");
@@ -494,25 +337,7 @@
     function filter() {
         jsItinerary = <?php echo json_encode($itineraryArray); ?>;
 
-        // rateArray = []
-        // for (itinerary of jsItineraryWithoutRate) {
-            
-        //     url = "api/itinerarypage/getItineraryReview.php?itineraryid=" + itinerary['itineraryid'];
-        //     axios.get(url)
-        //     .then(response =>{
-                
-        //         post_array = response.data.records
-        //         count = post_array.length
-        //         rate = 0
-        //         for (record of post_array){
-        //             rate += parseInt(record['rate'])
-        //         }
-        //         rate = rate/count
-        //         rateArray.push(rate);
-
-        //         console.log(rate);
-        //     })
-        // }
+       
 
         var country = document.getElementById('locationInput').value;
         var price = document.getElementById('pricerange').value;
@@ -549,9 +374,6 @@
                 continue;
             }
 
-            // console.log(price);
-            // console.log(itinerary['price']);
-            // console.log(priceArray[(0)][0]));
 
             var priceArray = [[0,9.99], [10, 19.99], [20,29.99], [30,39.99], [40,49.99], [50, 9999999999]];
 
@@ -569,6 +391,7 @@
 
         jsItinerary = arrayItinerary;
         document.getElementById("jsitin").innerHTML = jsItinerary;
+        var userid = sessionStorage.getItem("userid");
         
         for(i=0;i<jsItinerary.length;i++){
             str += '<div class="card">';
@@ -580,7 +403,7 @@
             str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
             str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
             str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
-            str += '<a href="#" class="btn btn-warning">View More</a>';
+            str += '<a href="ItineraryPage.php?itineraryid='+ jsItinerary[i]['itineraryid'] + '&userid=' + userid +'" class="btn btn-warning">View More</a>';
             str += '</div></div>';
             count++
             if(count==3){
@@ -664,6 +487,8 @@
                 if (price != 0 && ((parseFloat(jsItinerary[i]['price']) < priceArray[(price-1)][0]) || (parseFloat(jsItinerary[i]['price']) > priceArray[(price-1)][1]))) {
                     continue;
                 }
+
+                var userid = sessionStorage.getItem("userid");
                 
                 str += '<div class="card">';
                 str += '<img class="card-img-top" src="' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
@@ -674,7 +499,7 @@
                 str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
                 str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
                 str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
-                str += '<a href="#" class="btn btn-warning">View More</a>';
+                str += '<a href="ItineraryPage.php?itineraryid='+ jsItinerary[i]['itineraryid'] + '&userid=' + userid +'" class="btn btn-warning">View More</a>';
                 str += '</div></div>';
                 counts++
                 if(counts== 3){
@@ -757,6 +582,8 @@
                 if (price != 0 && ((parseFloat(jsItinerary[i]['price']) < priceArray[(price-1)][0]) || (parseFloat(jsItinerary[i]['price']) > priceArray[(price-1)][1]))) {
                     continue;
                 }
+
+                var userid = sessionStorage.getItem("userid");
                 
                 str += '<div class="card">';
                 str += '<img class="card-img-top" src="' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
@@ -767,7 +594,7 @@
                 str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
                 str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
                 str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
-                str += '<a href="#" class="btn btn-warning">View More</a>';
+                str += '<a href="ItineraryPage.php?itineraryid='+ jsItinerary[i]['itineraryid'] + '&userid=' + userid +'" class="btn btn-warning">View More</a>';
                 str += '</div></div>';
                 counter++
                 if(counter==3){
@@ -800,26 +627,52 @@
         }
     }
 
-    // function filterCategory(cat) {
-    //     str = '<div class="card-columns">'
-    //     for (itinerary of jsItinerary) {
-    //         if (cat != itinerary['tourcategory']) {
-    //             continue;
-    //         }
-            
-    //         str += '<div class="card">';
-    //         str += '<img class="card-img-top" src="images/' + itinerary['thumbnail'] + '" alt="' + itinerary['tourtitle'] + '">';
-    //         str += '<div class="card-body">';
-    //         str += '<h5 class="card-title">' + itinerary['tourtitle'] + '</h5>';
-    //         str += '<p class="card-text">Price: $' + itinerary['price'] + '</p>';
-    //         str += '<a href="#" class="btn btn-warning">View More</a>';
-    //         str += '</div></div>';
-    //     }
-    //     str += '</div>';
-
-    //     document.getElementById("cards").innerHTML = str;
-    // }
+ 
 </script>
+
+<!-- Convert session userid to javascript -->
+<script type="text/javascript">
+    var jsSessionUserId = <?php echo json_encode($_SESSION['userid']); ?>;
+    sessionStorage.setItem("userid",jsSessionUserId);
+</script>
+
+
+<style>
+        .navbar-nav a:hover {
+            border-bottom: #f0ad4e 2px solid;
+        }
+
+
+         /* Footer */
+         .footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 200px;
+        }
+
+        .footer a {
+            color: #fff;
+        }
+
+        .footer a:hover {
+            color: #f0ad4e;
+        }
+
+        .footer .social>* {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .bg-dark {
+            background: #333;
+            color: #fff;
+        }
+
+
+    </style>
 
 </body>
 </html>
