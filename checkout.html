@@ -15,12 +15,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
 
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+    <!-- <link rel="stylesheet" href="create_itinerary.css"> -->
+ 
+
+
+    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-lg">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your
-                itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
         <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
@@ -38,6 +48,8 @@
 
 
                 <script>
+                    console.log(sessionStorage['userid']);
+
                     var emptyHtml = '';
                     var createitinerary = '';
                     var cart = '';
@@ -61,7 +73,6 @@
             </div>
         </div>
     </nav>
-
 
 
 
@@ -152,6 +163,7 @@
 
 
 
+
     <script>
         if (!sessionStorage['userid']) {
             document.getElementById('itinerary_body').innerHTML = "";
@@ -163,6 +175,12 @@
                    
                 </div>
             </div>`;
+            document.getElementById('profile').innerHTML = `
+            <a class='nav-item nav-link text-white' href=login.php>Login</a>`;
+            document.getElementById('createitinerary').innerHTML = `
+            <a class='nav-item nav-link text-white' href=checkout.html>Cart</a>
+            `;
+
 
         }
     </script>
