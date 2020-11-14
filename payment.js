@@ -24,7 +24,7 @@ function purchasesby_id() {
 
             for (var record of all_records) {
                 var itineraryid = record['itineraryid'];
-                if (itineraryid in checkout_items) {
+                if (itineraryid in checkout_items && record['userid']==userid) {
                     count++;
                     var price = record['price'];
                     total_price += Number(price);
