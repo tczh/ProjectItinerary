@@ -1,5 +1,6 @@
 <?php
     session_start();
+    var_dump($_SESSION);
     // var_dump($_SESSION["email"]);
     // var_dump($_SESSION["userid"]);
     spl_autoload_register(
@@ -211,7 +212,7 @@
                         <option>Season</option>
                         <option>Spring</option>
                         <option>Summer</option>
-                        <option>Autumn</option>
+                        <option>Fall</option>
                         <option>Winter</option>
                     </select>
                 </div>
@@ -576,6 +577,7 @@
             str += '<div class="card-body">';
             str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
             str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+            str += '<p class="card-text">Country: ' + jsItinerary[i]['country'] + '</p>';
             str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
             str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
             str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
@@ -669,6 +671,7 @@
                 str += '<div class="card-body">';
                 str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
                 str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+                str += '<p class="card-text">Country: ' + jsItinerary[i]['country'] + '</p>';
                 str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
                 str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
                 str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
@@ -761,6 +764,7 @@
                 str += '<div class="card-body">';
                 str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
                 str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+                str += '<p class="card-text">Country: ' + jsItinerary[i]['country'] + '</p>';
                 str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
                 str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
                 str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
