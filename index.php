@@ -572,7 +572,7 @@
         
         for(i=0;i<jsItinerary.length;i++){
             str += '<div class="card">';
-            str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
+            str += '<img class="card-img-top" src="' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
             str += '<div class="card-body">';
             str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
             str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
@@ -665,7 +665,7 @@
                 }
                 
                 str += '<div class="card">';
-                str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
+                str += '<img class="card-img-top" src="' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
                 str += '<div class="card-body">';
                 str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
                 str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
@@ -757,7 +757,7 @@
                 }
                 
                 str += '<div class="card">';
-                str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
+                str += '<img class="card-img-top" src="' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
                 str += '<div class="card-body">';
                 str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
                 str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
