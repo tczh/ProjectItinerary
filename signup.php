@@ -33,6 +33,7 @@
                margin: auto;
                margin-bottom: 61px;
                /* margin-bottom: 100px; */
+               min-width: 450px;
         }
 
         #title {
@@ -132,7 +133,7 @@
             color: #fff;
         }
 
-        .col-md, #password, #confirmpassword, #country-dropdown {
+        .col-md, #country-dropdown, #userid {
             margin-bottom: 16px;
         }
 
@@ -140,7 +141,7 @@
 </head>
 <body onload="dropdown_populate()">
 <div class="marginbox">
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-md">
         <!-- Navbar content -->
         <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
         <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
@@ -159,7 +160,7 @@
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
                 }
                 else {
-                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>";
+                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
                 }
                 ?>
 
@@ -189,7 +190,16 @@
             </p>";
         }
         unset($_SESSION["existingemail"]);
+
+        if (isset($_SESSION["existingUserId"])) {
+            echo "<p class='red'>
+                User ID already exist.
+            </p>";
+        }
+        unset($_SESSION["existingUserId"]);
     ?>
+
+    <div id="passwordValidation"></div>
 
     <form id="form" action="objects/ProcessSignup.php" method='GET'>
         <p>
@@ -208,6 +218,8 @@
         <input type="email" name='email' class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
+        <input type="text" name='userid' class="form-control" id="userid" placeholder="Enter User ID">
+
         <div id="country"></div>
 
         <!-- <select class="custom-select mr-sm-2 dual-form" id="inlineFormCustomSelect">
@@ -215,10 +227,10 @@
         </select> -->
 
         <div class="row dual-form">
-            <div class="col">
+            <div class="col-md">
                 <input type="password" id="password" name='password' class="form-control" placeholder="Password">
             </div>
-            <div class="col">
+            <div class="col-md">
                 <input type="password" id="confirmpassword" name='confirmpassword' class="form-control" placeholder="Confirm Password">
             </div>
         </div>
@@ -287,10 +299,15 @@
             var val4 = $("#password").val();
             var val5 = $("#confirmpassword").val();
     
-            if(val1.length == 0 || val2.length == 0 || val3.length == 0 || val4.length == 0 || val5.length == 0)
+            if(val1.length == 0 || val2.length == 0 || val3.length == 0 || val4.length == 0 || val5.length == 0 || val4 != val5)
                 disableButton = true;
     
             $('button').attr('disabled', disableButton);
+
+            if (val4 != val5)
+                document.getElementById('passwordValidation').innerHTML = "<p class='red'>Password don't match</p>"
+            else
+                document.getElementById('passwordValidation').innerHTML = ""
         }
     </script>
 </body>
