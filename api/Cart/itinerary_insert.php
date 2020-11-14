@@ -27,7 +27,7 @@ $cart->country = isset($_GET['country']) ? $_GET['country'] : die();
 $cart->price = isset($_GET['price']) ? $_GET['price'] : die();
 $cart->thumbnail = isset($_GET['thumbnail']) ? $_GET['thumbnail'] : die();
 $cart->season = isset($_GET['season']) ? $_GET['season'] : die();
-
+$cart->generaldetails = isset($_GET['generaldetails']) ? $_GET['generaldetails'] : die();
 
 $stmt = $cart->insert_itinerary_purchased();
 
