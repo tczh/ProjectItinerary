@@ -41,7 +41,68 @@ body {
     margin-right:-20px;
 }
 
-#add-day-btn {
+/* #add-day-btn {
     background-color: #ffb703;
+} */
+/* 
+#submit {
+    background-color:  #023047;
+    opacity: 70%; 
+} */
+
+
+/* Navbar */
+.motto {
+    font-style: italic;
+    font-size: 15px;
+    margin-left: 5px;
 }
 
+.navbar {
+    /* background-color: #333; */
+    /* color: white; */
+    /* display: flex; */
+    /* top: 0px; */
+    /* opacity: 0.8; */
+    position: sticky;
+    top: 0px;
+}
+
+.navbar.top {
+    background: transparent;
+}
+
+.navbar-nav a:hover {
+    border-bottom: #f0ad4e 2px solid;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+/* a.navbar-brand small {
+    display: block;
+    font-size: 0.650em;
+    text-transform: capitalize;
+}
+
+a.navbar-brand {
+    color: #ffffff;
+    font-size: 1.500em;
+    text-transform: uppercase;
+    height: 70px;
+  }
+
+@media (max-width: 468px) {
+    .navbar {
+        height: 75px;
+    }
+} */
+
+/* Footer */
+
+/*14/11*/
+img {
+    max-width: 100%;
+    height: auto;
+}
