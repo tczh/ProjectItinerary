@@ -27,6 +27,7 @@
         // if($success){
             var_dump($user->getUserId());
             $_SESSION["userid"] = $user->getUserId();
+            // $_SESSION["fullname"] = 
             $_SESSION["email"] = $email;
             $_SESSION["check"] = true;
             // var_dump('test');
@@ -40,11 +41,17 @@
         $_SESSION["email"] = $email;
         $_SESSION["check"] = true;
         $dao = new UserDAO();
-        $count = $dao->generateUserId();
-        $_SESSION["userid"] = $count;
-        $user = $dao->register($count, $email, "", $_GET["first"], $_GET["last"], "");
-        header("Location: ../index.php");
-        // var_dump('test');
+        // $count = $dao->generateUserId();
+        $_SESSION["userid"] = $email;
+        $user = $dao->retrieve($email);
+        if ($user) {
+            header("Location: ../index.php");
+        }
+        else {
+            $user = $dao->register($email, $email, "", $_GET["first"], $_GET["last"], "");
+            header("Location: ../index.php");
+            // var_dump('test');
+        }
     }
 
     elseif ($password != "") {
