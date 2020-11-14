@@ -46,6 +46,7 @@
                margin: auto;
                margin-bottom: 140px;
                /* margin-bottom: 150px; */
+               min-width: 450px;
         }
 
         #title {
@@ -145,7 +146,7 @@
 </head>
 <body onload='init()'>
 <div class="marginbox">
-<nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+<nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-md">
         <!-- Navbar content -->
         <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
         <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
@@ -164,7 +165,7 @@
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
                 }
                 else {
-                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>";
+                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
                 }
                 ?>
 
