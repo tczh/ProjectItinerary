@@ -23,7 +23,7 @@
     <style>
         * {
                margin: 0;
-               /* padding: 0; */
+               padding: 0;
         }
 
         .motto {
@@ -91,21 +91,28 @@
             color: #fff;
         }
 
+        /* About Info */
         #about-info {
             margin-top: 100px;
         }
 
-        #about-info .info-left {
-            float: left;
+        /* #about-info .info-right {
+            float: right;
             width: 50%;
             min-height: 100%;
-        }
+        } */
 
-        #about-info .info-right img {
+        /* #about-info .info-right img {
             display: block;
             margin: auto;
-            width: 50%;
+            width: 70%;
             border-radius: 50%;
+        } */
+
+        #about-info .info-left {
+            /* float: left; */
+            /* width: 50%; */
+            min-height: 100%;
         }
 
         /* #main-footer {
@@ -117,7 +124,7 @@
         } */
 
         /* Testimonials */
-        #testimonials {
+        /* #testimonials {
             margin-top: 50px;
             height: 600px;
             background: url('images/LA.jpg') no-repeat center center/cover;
@@ -145,6 +152,55 @@
             border-radius: 50%;
         }
 
+        h1, h2, h3 {
+            padding-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        } */
+
+        /* Testimonials */
+        #testimonials {
+            height: 600px;
+            background: url('images/LA.jpg') no-repeat center center/cover;
+            padding-top: 100px;
+        }
+
+        #testimonials h2 {
+            color: #fff;
+            text-align: center;
+            padding-bottom: 40px;
+        }
+
+        #testimonials .testimonial {
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            opacity: 0.8;
+        }
+
+        #testimonials .testimonial img {
+            width: 100px;
+            float: left;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        .testimonial {
+            min-height: 140px;
+        }
+
+        /* Utility Classes */
+            .container {
+            margin: auto;
+            max-width: 1100px;
+            overflow: auto;
+            padding: 0 20px;
+        }
+
+        
+
     </style>
 </head>
 <body>
@@ -167,7 +223,7 @@
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
                 }
                 else {
-                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>";
+                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
                 }
                 ?>
 
@@ -192,9 +248,6 @@
                 Hence, the main purpose of our project is to allow busy travellers to gain access to existing itineraries while not letting itineraries that others planned go to waste. 
                 </p>
           </div>
-          <div class="info-right">
-            <img src="images/Singapore.jpg" alt="hotel">
-          </div>
         </div>
       </section>
 
@@ -202,15 +255,15 @@
 
     <section id="testimonials" class="py-3">
         <div class="container">
-        <h2 class="text-dark">What Our Customers Say</h2>
-        <div class="testimonial bg-warning">
-            <img src="images/Timothy.jpg" alt="Tim">
-            <h3 class="text-dark mb-5">Thanks Guan Yin Ma for this dope app!</h3>
-        </div>
+            <h2 class="text-dark">What Our Customers Say</h2>
+            <div class="testimonial bg-dark">
+                <img src="images/Timothy.jpg" alt="Tim">
+                <h4>Thanks Guan Yin Ma for this dope app!</h4>
+            </div>
 
-        <div class="testimonial bg-warning">
-            <img src="images/XL.jpg" alt="Tim">
-            <h3 class="text-dark mb-5">With this app, Elvis can better plan his itinerary of leaving home on time!</h3>
+            <div class="testimonial bg-dark">
+                <img src="images/XL.jpg" alt="Tim">
+                <h4>With this app, Elvis can better plan his itinerary of leaving home on time!</h4>
             </div>
         </div>
     </section>
