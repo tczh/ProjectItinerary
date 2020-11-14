@@ -21,38 +21,49 @@ var is_image = function () {
   document.getElementById('image').src = document.getElementById('imageUrl').value;
 }
 
+//14/11
 var errorCallback = function () {
-  alert('Image did not exist. Input a valid image url');
+  //alert('Image did not exist. Input a valid image url');
   sessionStorage.setItem("imageExists", "false");
 
-  // var el = document.getElementById("error-body");
-  // el.innerHTML = 'Image does not exist. Provide a valid image url';
-  // document.getElementById("errorsLabel").innerText = "Upload Image";
-  // $('#errors').modal(show);
+  var html = `
+  <div class="alert alert-danger" role="alert">
+    Image did not exist. Input a valid image url.
+  </div>
+    `;
+
+  document.getElementById("imageErrorMsg").innerHTML = html;
+  document.getElementById("image").style.display = "none";
 
 }
 
 var loadCallback = function () {
-  alert('Image exists. Thank you.');
-  sessionStorage.setItem("imageExists", "true");
-
-  // var el = document.getElementById("error-body");
-  // el.innerHTML = 'Image exists. Thank you.';
-  // document.getElementById("errorsLabel").innerText = "Upload Image";
-  document.getElementById("itinerary-image").setAttribute("src",document.getElementById('imageUrl').value );
-  // $('#errors').modal(show);
-
+  //alert('Image exists. Thank you.');
+  if (document.getElementById('image').src !== "images/placeholderImage.gif" ) {
+    sessionStorage.setItem("imageExists", "true");
+  };
+  document.getElementById("imageErrorMsg").innerHTML = "";
+  document.getElementById("image").style.display = "block";
+  //document.getElementById("itinerary-image").setAttribute("src",document.getElementById('imageUrl').value );
   
 }
 
 function removeImage() {
-  var src = document.getElementById('itinerary-image').src;
-  if (src.length>0) {
-    document.getElementById("itinerary-image").setAttribute("src","");
-  } else {
-    alert("No image to remove!");
-  }
+  //var src = document.getElementById('itinerary-image').src;
+
+  //console.log("in src.length > 0");
+  //console.log(src);
+  //document.getElementById('image').src.setAttribute("src","images/placeholderImage.gif");
+  //console.log( document.getElementById('itinerary-image').src);
+  document.getElementById("image").style.display = "none";
+
+  document.getElementById('image').src = "images/placeholderImage.gif";
+  document.getElementById('imageUrl').value = "";
+  console.log("This is the imageURL value in removeImage " + document.getElementById('imageUrl').value );
+  
 }
+
+//end of 14/11
 
 // function checkImage() {
 //   var url = document.getElementById("imageUrl").value;
