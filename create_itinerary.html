@@ -349,25 +349,27 @@
     </div>
 
     <!--start of container for price input and confrim btn-->
-    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0; margin-left: 0px; background-color:  #023047;">
-
+    <!--12/11-->
+    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0; margin-left: 0px; background-color:  #023047; overflow: hidden;">
+    <!--end of 12/11-->
           <form>
             <div class="form-row ">
-              <div class="col-sm">
+              <div class="col-md">
               </div>
 
-              <div class="col-sm-2">
+              <div class="col-md-3 d-flex justify-content-center" > 
                 <label class="sr-only" for="price">price</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
+                    <!--12/11-->
                     <div class="input-group-text">SGD $</div>
                   </div>
                   <input type="number" min="0" class="form-control" id="price" placeholder="price">
                 </div>
               </div>
 
-              <div class="col-sm-1">
-                <button type="button" class="btn btn-primary" onclick="validateData()" data-toggle="modal" data-target="#errors">Submit</button> <!--need to add onclick=submit data and validate data-->
+              <div class="col-md-1 d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" onclick="validateData()" data-toggle="modal" data-target="#errors">Submit</button> 
               </div>
 
             </div>
