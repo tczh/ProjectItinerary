@@ -12,6 +12,7 @@
     // var_dump($_GET["last"]);
     // var_dump($_GET["country"]);
 
+    $userid = $_GET["userid"];
     $email = $_GET["email"];
     $password = $_GET["password"];
     $first = $_GET["first"];
@@ -38,9 +39,14 @@
         header("Location: ../signup.php");
     }
 
-    else {
-        $count = $dao->generateUserId();
-        $user = $dao->register($count, $email, $password, $first, $last, $country);
+    if ($dao->retrieveUserId($userid)) {
+        $_SESSION["existingUserId"] = true;
+        header("Location: ../signup.php");
+    }
+
+    if (!$dao->retrieve($email) && !$dao->retrieveUserId($userid)) {
+        // $count = $dao->generateUserId();
+        $user = $dao->register($userid, $email, $password, $first, $last, $country);
         if ($user) {
             header("Location: ../success.html");
         }
