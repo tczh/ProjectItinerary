@@ -45,6 +45,7 @@
         $_SESSION["userid"] = $email;
         $user = $dao->retrieve($email);
         if ($user) {
+            $_SESSION["userid"] = $user->getUserId();
             header("Location: ../index.php");
         }
         else {
