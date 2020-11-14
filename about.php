@@ -193,7 +193,7 @@ spl_autoload_register(
                 }
                 ?>
 
-                <a class='nav-item nav-link text-white' href=#>Cart</a>
+                <a class='nav-item nav-link text-white' href="checkout.html">Cart</a>
 
                 <?php
                 if (isset($_SESSION["userid"])) {
