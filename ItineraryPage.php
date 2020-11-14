@@ -326,6 +326,7 @@
                         this.rate += parseInt(record['rate'])
                     }
                     this.rate = this.rate/count
+                    this.rate= this.rate.toFixed(2)
                     if(count<=3){
                         for (record of post_array){
                             this.commentsArray.push(record)
