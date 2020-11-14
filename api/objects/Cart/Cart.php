@@ -175,6 +175,16 @@ class Cart{
     }
 
 
+    public function itinerary_owner_name(){
+        $query = "select * from login where userid= ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->userid);
+        $stmt->execute();
+        return $stmt;
+
+    }
+
+
 
 }
 

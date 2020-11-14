@@ -1,9 +1,8 @@
 // display all the add to cart items
 function display_store() {
     userid = sessionStorage.getItem('userid');
-    console.log(userid);
 
-    console.log("yo");
+
 
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
@@ -14,10 +13,11 @@ function display_store() {
             var str = ``;
             var store_name = [];
 
-            //need to close the div
-
+            count = 0
             for (record of all_records) {
                 var itineraryowner = record['itineraryowner'];
+
+
                 var itineraryid = record['itineraryid'];
                 if (store_name.includes(itineraryowner) == false && store_name.length == 0) {
 
@@ -28,17 +28,23 @@ function display_store() {
                         <div class="row" style="border-bottom: gray solid 1px ;">
                             <div class="col-8" style="padding: 10px; ">
                             <input type="checkbox" class="store" id="${itineraryowner}" onclick="selected()" value="0">&nbsp&nbsp&nbsp
-                            <label for="${itineraryowner}"><i>${itineraryowner}'s itinerary</i></label>
+                            <label for="${itineraryowner}"><i> <div id='retrieveName${count}'></div></i></label>
                             </div>
                         </div>
 
                     
-                    <div class="row">
-                        <div class="col-8" style="padding: 10px;">
+                        <div class="row">
+                        <div class="col-3" style="padding: 10px; overflow: hidden;">
                             <input type="checkbox" class= "${itineraryowner}" id="${itineraryid}" value=${record['price']} onclick="itinerary_select(${itineraryid})"> 
                             &nbsp&nbsp&nbsp
-                            <img src="images/${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
-                            <span>&nbsp&nbsp&nbsp${record['tourtitle']}</span>
+                            <img src="${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
+                        </div>
+
+                        <div class="col-5" style="align-content: left;">
+                            <br>
+                            <br>
+                            <br>
+                            ${record['tourtitle']}
                         </div>
 
                         <div class="col-2" style="padding: 70px 10px 70px 10px;">
@@ -48,6 +54,11 @@ function display_store() {
                             <button type="button" class="btn btn-secondary btn-sm" onclick="delete_records(${itineraryid})">Delete</button>
                         </div>
                     </div>`;
+                    retrieval = getname(itineraryowner, count);
+                    console.log(retrieval);
+                    console.log("test");
+                    count += 1;
+
 
 
                 } else if (store_name.includes(itineraryowner) == false && store_name.length != 0) {
@@ -59,18 +70,25 @@ function display_store() {
                         <div class="row" style="border-bottom: gray solid 1px ;">
                             <div class="col-8" style="padding: 10px; ">
                             <input type="checkbox" class="store" id="${itineraryowner}" onclick= "selected()" value="0">&nbsp&nbsp&nbsp
-                            <label for="${itineraryowner}"><i>${itineraryowner}'s itinerary</i></label>
+                            <label for="${itineraryowner}"><i><div id='retrieveName${count}'></div></i></label>
                             </div>
                         </div>
 
                     
                     <div class="row">
-                        <div class="col-8" style="padding: 10px;">
+                        <div class="col-3" style="padding: 10px;overflow: hidden; ">
                             <input type="checkbox" class= "${itineraryowner}" id="${itineraryid}" value=${record['price']} onclick="itinerary_select(${itineraryid})">
                             &nbsp&nbsp&nbsp
-                            <img src="images/${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
-                            <span>&nbsp&nbsp&nbsp${record['tourtitle']}</span>
+                            <img src="${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
                             
+                        </div>
+
+
+                        <div class="col-5" style="align-content: left;">
+                            <br>
+                            <br>
+                            <br>
+                            ${record['tourtitle']}
                         </div>
 
                         <div class="col-2" style="padding: 70px 10px 70px 10px;">
@@ -80,17 +98,29 @@ function display_store() {
                             <button type="button" class="btn btn-secondary btn-sm" onclick="delete_records(${itineraryid})">Delete</button>
                         </div>
                     </div>`;
+                    retrieval = getname(itineraryowner, count);
+                    console.log(retrieval);
+                    console.log("test");
+                    count += 1;
 
 
                 } else {
                     str += `
                     <div class="row">
-                        <div class="col-8" style="padding: 10px;">
+                        <div class="col-3" style="padding: 10px;overflow: hidden; ">
                             <input type="checkbox" class="${itineraryowner}" id="${itineraryid}" value=${record['price']} onclick="itinerary_select(${itineraryid})">
                             &nbsp&nbsp&nbsp
-                            <img src="images/${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
-                            <span>&nbsp&nbsp&nbsp${record['tourtitle']}</span>
+                            <img src="${record['thumbnail']}" width="150px" height="150px" style="clip-path: square(60px at center);">
+                           
                         </div>
+
+                        <div class="col-5" style="align-content: left;">
+                            <br>
+                            <br>
+                            <br>
+                            ${record['tourtitle']}
+                        </div>
+
 
                         <div class="col-2" style="padding: 70px 10px 70px 10px;">
                             ${record['price']}
@@ -329,7 +359,7 @@ function delete_records(itineraryid) {
         }
     }
 
-    var url = "api/Cart/Cart_delete.php?userid="+ userid + "&itineraryid=" + itineraryid; //need to change the username based on the session later!
+    var url = "api/Cart/Cart_delete.php?userid=" + userid + "&itineraryid=" + itineraryid; //need to change the username based on the session later!
     request.open("GET", url, true);
     request.send();
 
@@ -363,13 +393,57 @@ function checkout_button() {
 
         }
     }
-    
+
 
     sessionStorage.setItem('checkout_items', JSON.stringify(checkout_items));
     sessionStorage.setItem("userid", userid);
 
-
 }
 
 
+// var fullname='';
+function getname(itineraryowner, count) {
 
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response_json = JSON.parse(this.responseText);
+            var all_records = response_json.records;
+            for (var record of all_records) {
+                firstname = record['firstname'];
+                lastname = record['lastname'];
+
+
+                document.getElementById(`retrieveName${count}`).innerText = firstname + " " + lastname + "'s itinerary";
+                console.log(firstname);
+                console.log(lastname);
+                console.log(count);
+            }
+
+        } else if (this.readyState == 4 && this.status == 404) {
+            alert("Error reading file");
+            return;
+        }
+    };
+    request.open("GET", "api/Cart/itinerary_owner_name.php?userid=" + itineraryowner, true);
+    console.log(request);
+    request.send();
+
+
+
+
+}
+
+function retrieveName(obj) {
+    var response_json = JSON.parse(obj.responseText);
+    var all_records = response_json.records;
+
+    for (var record of all_records) {
+        firstname = record['firstname'];
+        lastname = record['lastname'];
+
+
+
+    }
+    document.getElementById('retrieveName').innerText = firstname + " " + lastname + "'s itinerary";
+}
