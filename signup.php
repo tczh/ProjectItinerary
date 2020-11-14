@@ -79,7 +79,7 @@
             /* color: white; */
             /* display: flex; */
             /* top: 0px; */
-            opacity: 0.8;
+            
             position: fixed;
             top: 0px;
         }
@@ -141,13 +141,16 @@
 </head>
 <body onload="dropdown_populate()">
 <div class="marginbox">
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-md">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark navbar-expand-md" style="background-color: #023047;">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-        <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
-        <button class='navbar-toggler' data-toggle ='collapse' data-target='#myMenu'>
+        <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
             <span class='navbar-toggler-icon'></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="myMenu">
@@ -250,7 +253,7 @@
     </form>
     </div>
 
-    <footer class="footer bg-dark">
+    <footer class="footer" style="background-color: #023047; color:white;">
       <div class="social">
         <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
         <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
