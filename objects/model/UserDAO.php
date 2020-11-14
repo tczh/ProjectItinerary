@@ -23,21 +23,41 @@
             return $user;
         }
 
-        public function register($count, $email, $hashed_password, $first, $last, $country) {
+        public function retrieveUserId($userid){
+            $conn_manager = new ConnectionManager();
+            $pdo = $conn_manager->getConnection();
+            
+            $sql = "select * from login where userid=:userid";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":userid",$userid,PDO::PARAM_STR);
+            $stmt->execute();
+            
+            $user = null;
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            if($row = $stmt->fetch()){
+                $user = new User($row['userid'], $row["email"],$row["password"]);
+            }
+            
+            $stmt = null;
+            $pdo = null;
+            return $user;
+        }
+
+        public function register($userid, $email, $hashed_password, $first, $last, $country) {
 
             // Step 1 - Connect to Database
             $connMgr = new ConnectionManager();
             $pdo = $connMgr->getConnection();
 
-            var_dump($count, $email, $hashed_password, $first, $last, $country);
+            var_dump($userid, $email, $hashed_password, $first, $last, $country);
     
             // Step 2 - Prepare SQL
             $sql = "INSERT INTO login VALUES (
-                        :count, :email, :first, :last, :hashed_password, 1, :country, '', ''
+                        :userid, :email, :first, :last, :hashed_password, 1, :country, '', ''
                     )
             ";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':count', $count, PDO::PARAM_INT);
+            $stmt->bindParam(':userid', $userid, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':hashed_password', $hashed_password, PDO::PARAM_STR);
             $stmt->bindParam(':first', $first, PDO::PARAM_STR);
