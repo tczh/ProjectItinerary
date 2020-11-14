@@ -16,6 +16,9 @@
             background-color: #dbdbf0;
         }
         
+        .style2{
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
 
         #map {
             height: 300px;
@@ -66,8 +69,6 @@
                 <?php 
                     session_start();
                     $itineraryid= $_GET['itineraryid'];
-                    // remove this line later!!
-                    $_SESSION['email'] = '123';
                     if(isset($_GET['userid']) && isset($_SESSION['email'])){
                         $userid = $_GET['userid'];
                     }
@@ -76,7 +77,6 @@
                     }
                 
                 ?>
-                
                 <img v-bind:src="thumbnail" style="width:100%;height:200px;object-fit:cover">
                 <h1>{{title}}</h1>
                 <h5>Experience {{country}} in <span class="font-italic">{{season}}</span></h5>
@@ -139,7 +139,11 @@
                     <span class='highlight'>Itinerary created by {{owner}}</span>
                 </div>
                 <hr>
-                
+                <h3>Summary</h3>
+                <div class ='card mt-3 mb-5 p-3 style2' style='width: 70%'>
+                    {{summary}}
+                </div>
+                <hr>
             </div>
             <div class="col-sm-8 text-center" v-if="error != '1'">
                 <h3>Activities for Day 1</h3>
@@ -158,7 +162,7 @@
                 <div class='mt-5'>
         
                     <h5 v-if="userid1 ==0">Interested in finding out more? <a href="login.php">Click here</a> to add this itinerary to your cart now!!</a></h5>
-                    <h5 v-else>Interested in finding out more? <a href="checkout.html" v-on:click='insertCart()'>Click here</a> to add this itinerary to your cart now!!</a></h5>
+                    <h5 v-else-if="error2 == '1' && error3 =='1'">Interested in finding out more? <a href="checkout.html" v-on:click='insertCart()'>Click here</a> to add this itinerary to your cart now!!</a></h5>
                 </div>
             </div>
             <div class="col-sm-4 text-center" style="background:white;" v-if="error != '1'">
@@ -179,8 +183,8 @@
                             Price: {{price}}
                         </p>
                         <a href="login.php" class="btn btn-warning p-2" style="font-size:14px" v-if="userid1 ==0">ADD TO CART <i class="fa fa-cart-plus"></i></a>
-                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else v-on:click="insertCart()">ADD TO CART <i class="fa fa-cart-plus"></i></button>
-              
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else-if="error2 == '1' && error3 =='1'" v-on:click="insertCart()">ADD TO CART <i class="fa fa-cart-plus"></i></button>
+                        <button data-toggle="modal" data-target="#exampleModal" class="btn btn-warning p-2" style="font-size:14px" v-else disabled>ADD TO CART <i class="fa fa-cart-plus"></i></button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -215,25 +219,22 @@
                     This itinerary has not been reviewed yet :(
                 </div>
                 <div v-else>
-                    <div class='style2 text-left p-3 ' v-for="comments in commentsArray">
-                        
-                        
+                    <div class='text-left p-3 ' v-for="comments in commentsArray">
                         <h5>
                             {{comments['userid']}} &nbsp
                             
                             <span v-for="i in parseInt(comments['rate'])" style='font-size:14px'>
                                 <i class='fa fa-star fa-lg' style='color:yellow'></i>
                             </span>
-                            <span style='float:right'>
-                                <a><i class='fa fa-thumbs-o-up'></i></a>
-                            </span>
+
                         </h5>
                         
                         <div class='mt-3'>
                             {{comments['message']}}
+                        
                         </div>
                         <div class='text-right' style='font-size:11px;font-variant:small-caps'>
-                            <span style='color:grey'>11 November 2020</span>
+                            <span style='color:grey'>{{comments['date']}}</span>
                         </div>
                         <hr>
                     </div>
@@ -266,7 +267,10 @@
                 lat1:'',
                 lng1:'',
                 rate:0,
-                error1:''
+                error1:'',
+                error2:'',
+                error3:'',
+                summary:'',
                 
             },
             created:function(){
@@ -281,6 +285,7 @@
                     this.thumbnail = post_array['thumbnail']
                     this.category = post_array['tourcategory']
                     this.title = post_array['tourtitle']
+                    this.summary = post_array['generaldetails']
                     url2 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + this.country+ "&key=" + this.apiKey
                     axios.get(url2)
                     .then(response =>{
@@ -289,7 +294,7 @@
                         this.lng1 = post_array2['lng']
                         initMap(this.lat1,this.lng1)
                     }).catch(error =>{
-                        this.error="1"
+                        this.error="2"
                     })
             
                 }).catch(error =>{
@@ -337,7 +342,22 @@
                 
                 
                 if (this.userid1 != 0){
-                    console.log('if user exists do api call for addcart table !! TO DO !! Check also if is creator or is already bought')
+                    url = "api/itinerarydetails/getBoughtItineraryHeader.php?itineraryid=" + this.itineraryid + "&userid=" + this.userid1
+                    axios.get(url)
+                    .then(response =>{
+                        console.log(response)
+                    }).catch(error =>{
+                        this.error2="1"
+                    })
+
+                    url = "api/itinerarydetails/getItineraryHeader.php?itineraryid=" + this.itineraryid + "&userid=" + this.userid1
+                    axios.get(url)
+                    .then(response =>{
+                        console.log(response)
+                    }).catch(error =>{
+                        this.error3="1"
+                    })
+                    
                 }
     
             },

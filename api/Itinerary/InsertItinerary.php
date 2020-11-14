@@ -25,6 +25,7 @@ $Itinerary->country = isset($_GET['country']) ? $_GET['country'] : die();
 $Itinerary->price = isset($_GET['price']) ? $_GET['price'] : die();
 $Itinerary->thumbnail = isset($_GET['thumbnail']) ? $_GET['thumbnail'] : die();
 $Itinerary->season = isset($_GET['season']) ? $_GET['season'] : die();
+$Itinerary->generaldetails = isset($_GET['generaldetails']) ? $_GET['generaldetails'] : die();
 
 
 $stmt = $Itinerary->InsertItinerary();

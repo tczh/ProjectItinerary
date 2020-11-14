@@ -45,7 +45,8 @@ if($num > 0) {
             "country" => $country,
             "price" => $price,
             "thumbnail" => $thumbnail,
-            "season" => $season
+            "season" => $season,
+            "generaldetails" => $generaldetails
 
         );
 

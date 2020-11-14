@@ -491,7 +491,6 @@ function displayCreatedItinerary(userid){
                         <hr class="col-xs-12">
                         <div class="btn-group btn-block">
                             <a href="ItineraryDetails.php?itineraryowner=${userid}&itineraryid=${record["itineraryid"]}" class="btn btn-primary">View Itinerary</a>
-                            <a href="#" class="btn btn-primary">Edit Itinerary</a>
                         </div>
                     </div>
                 </div>

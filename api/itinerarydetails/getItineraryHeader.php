@@ -51,7 +51,9 @@ if($num > 0) {
 
             "thumbnail" => $thumbnail,
 
-            "season" => $season
+            "season" => $season,
+            
+            "generaldetails" => $generaldetails
 
         );
 
