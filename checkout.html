@@ -15,12 +15,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
 
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="create_itinerary.css">
+
+
+
+    <nav id="navbar" class="navbar top fixed-top navbar-dark  navbar-expand-lg" style="background-color: #023047;">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your
-                itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
         <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
@@ -36,8 +52,10 @@
                 <div id='cart'></div>
                 <a class='nav-item nav-link text-white' href="#" id="logout"></a>
 
-               
+
                 <script>
+                    console.log(sessionStorage['userid']);
+
                     var emptyHtml = '';
                     var createitinerary = '';
                     var cart = '';
@@ -46,7 +64,8 @@
                         // sessionStorage.clear();
                         emptyHtml += `<a class='nav-item nav-link text-white' id="profilepage" href='ProfilePage.php'>Profile</a>
                         `;
-                        createitinerary += `<a class='nav-item nav-link text-white' id="createitinerary" href='create_itinerary.html'>Create Itinerary</a>`;
+                        createitinerary +=
+                            `<a class='nav-item nav-link text-white' id="createitinerary" href='create_itinerary.html'>Create Itinerary</a>`;
                         cart += `<a class='nav-item nav-link text-white' id="cart" href='checkout.html'>Cart</a>`;
                         document.getElementById('profile').innerHTML = emptyHtml;
                         document.getElementById('createitinerary').innerHTML = createitinerary;
@@ -67,14 +86,13 @@
 
 
 
-
     <!-- shopping cart header -->
 
 
-    <div class="container" style="background-color: rgb(150, 150, 151); color: white; padding: 5px; margin-top: 68px;">
+    <div class="container" style=" color:black; padding: 5px; margin-top:30px;">
         <div class="row">
             <div class="col">
-                <h4>Your shopping cart</h4>
+                <h3>Your shopping cart</h3>
             </div>
 
         </div>
@@ -117,11 +135,11 @@
     <!-- <footer> -->
     <div id="itinerary_body2">
 
-        <div style="position: sticky;bottom: 0;">
-            <div class="container shadow-sm p-3 mb-5"
+        <div style="position: sticky;bottom: 0; ">
+            <div class="container shadow-sm p-3 mb-5" style="background-color: #023047;"
                 style="background-color:rgb(36, 36, 51); color: white; padding: 15px; overflow: hidden;">
                 <div class="form-row">
-                    <div class="col-8">
+                    <div class="col-8" style="color: white;">
                         <h4>Total</h4>
                         Total Itineraries= <span id="total_number">0</span>
                     </div>
@@ -130,7 +148,7 @@
                         0.00
                     </div>
 
-                    <div class="col-sm-2" style="padding: 20px 10px 20px 10px; ">
+                    <div class="col-sm-2" style="padding: 20px 10px 20px 10px; color: white">
                         <button type="button" class="btn btn-outline-secondary"
                             onclick="checkout_button(); window.location.href='payment.html'">
                             Checkout</button>
@@ -142,31 +160,38 @@
         </div>
     </div>
 
-    
-
 
 
 
     <script src="checkout.js"></script>
 
-    <!-- <script>
+
+
+
+    <script>
         if (!sessionStorage['userid']) {
             document.getElementById('itinerary_body').innerHTML = "";
             document.getElementById('itinerary_body2').innerHTML = `
             <div class="jumbotron jumbotron-fluid" >
                 <div class="container" style="text-align: center;">
                     <h1 class="display-6">Please log into your account to view your cart</h1>
-                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='#'">Login here</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='login.php'">Login here</button>
                    
                 </div>
             </div>`;
+            document.getElementById('profile').innerHTML = `
+            <a class='nav-item nav-link text-white' href=login.php>Login</a>`;
+            document.getElementById('createitinerary').innerHTML = `
+            <a class='nav-item nav-link text-white' href=checkout.html>Cart</a>
+            `;
+
 
         }
-    </script> -->
+    </script>
 
 
 
-    <footer class="footer bg-dark">
+    <footer class="footer" style="background-color: #023047; color:white">
         <div class="social">
             <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
             <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
@@ -178,34 +203,13 @@
 
 
     <style>
-        .motto {
-            font-style: italic;
-            font-size: 15px;
-            margin-left: 5px;
-        }
-
-        .navbar {
-            opacity: 0.8;
-            position: fixed;
-            top: 0px;
-        }
-
-
-
-        .navbar.top {
-            background: transparent;
-        }
-
         .navbar-nav a:hover {
             border-bottom: #f0ad4e 2px solid;
         }
 
-        .nav-item {
-            margin-right: 20px;
-        }
 
-        /* Footer */
-        .footer {
+         /* Footer */
+         .footer {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -231,6 +235,8 @@
             background: #333;
             color: #fff;
         }
+
+
     </style>
 
 

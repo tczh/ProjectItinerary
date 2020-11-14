@@ -125,7 +125,7 @@ class Cart{
 
 
     public function insert_itinerary_purchased(){
-        $query = "insert into itinerary_purchased values(?,?,?,?,?,?,?,?,?)";
+        $query = "insert into itinerary_purchased values(?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->userid);
         $stmt->bindParam(2, $this->itineraryid);
@@ -136,6 +136,7 @@ class Cart{
         $stmt->bindParam(7, $this->price);
         $stmt->bindParam(8, $this->thumbnail);
         $stmt->bindParam(9, $this->season);
+        $stmt->bindParam(10, $this->generaldetails);
         $stmt->execute();
     
         return $stmt;
@@ -170,6 +171,16 @@ class Cart{
         $stmt->bindParam(11, $this->endtime);
         $stmt->execute();
     
+        return $stmt;
+
+    }
+
+
+    public function itinerary_owner_name(){
+        $query = "select * from login where userid= ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(1, $this->userid);
+        $stmt->execute();
         return $stmt;
 
     }

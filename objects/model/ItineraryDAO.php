@@ -7,7 +7,7 @@
             $conn_manager = new ConnectionManager();
             $pdo = $conn_manager->getConnection();
             
-            $sql = "select * from itinerary";
+            $sql = "select * from itinerary order by price asc";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             

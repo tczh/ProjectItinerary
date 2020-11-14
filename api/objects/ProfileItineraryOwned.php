@@ -22,6 +22,8 @@
         public $thumbnail;
 
         public $season;
+        
+        public $generaldetails;
 
         
         // constructor with $db as database connection

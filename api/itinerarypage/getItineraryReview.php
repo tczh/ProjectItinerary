@@ -42,6 +42,8 @@ if($num > 0) {
 
             "userid" => $userid,
 
+            "date" =>$date,
+
         );
 
         array_push($result_arr["records"], $item);

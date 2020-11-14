@@ -24,33 +24,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
 
     <style>
-      .motto {
-            font-style: italic;
-            font-size: 15px;
-            margin-left: 5px;
-      }
-
-      .navbar {
-            /* background-color: #333; */
-            /* color: white; */
-            /* display: flex; */
-            /* top: 0px; */
-            /* opacity: 0.8; */
-            position: sticky;
-            top: 0px;
-        }
-
-        .navbar.top {
-            background: transparent;
-        }
-
-        .navbar-nav a:hover {
-            border-bottom: #f0ad4e 2px solid;
-        }
-
-        .nav-item {
-            margin-right: 20px;
-        }
 
         /* Footer */
         .footer {
@@ -123,11 +96,13 @@
         </div>
       </nav> -->
 
-      <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+      <nav id="navbar" class="navbar top fixed-top navbar-dark navbar-expand-lg" style="background-color: #023047;"  > 
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your
-                itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+          <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+          <span class="text-warning">Tim's</span> Travel Agent
+          <!-- <small>Where your itineraries come to life</small> -->
+          <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
         <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
@@ -145,6 +120,9 @@
 
                
                 <script>
+
+                    console.log(sessionStorage['userid']);
+
                     var emptyHtml = '';
                     var createitinerary = '';
                     var cart = '';
@@ -229,7 +207,7 @@
                         <label class="form-check-label" for="category2">Luxury Trip</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="category3" name="category" value="Nature" >
+                        <input class="form-check-input" type="radio" id="category3" name="category" value="nature" >
                         <label class="form-check-label" for="category3">Nature exploration </label>
                       </div>
     
@@ -244,27 +222,32 @@
                       </div>
                     </div>
                   </div>
+                  
+                  <!--summary - 12/11-->
+                  <div class="form-group row">
+                    <label for="description-input" class=" col-sm-2 col-form-label" >Summary</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="generaldetails" value="" placeholder="This summary would be used to give users a preview of your itinerary before purchasing." rows="5"></textarea>
+                    </div>
+                  </div>
 
 
                   <!--Upload Image-->
-                  <!-- <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" onchange="document.getElementById('itinerary-image').src = window.URL.createObjectURL(this.files[0])">
-                    <label class="custom-file-label" for="customFile">Upload image</label>
-                  </div> -->
 
                   <div class="row " style="margin: 20px 0px;">
                     <input class="form-control col-sm" id="imageUrl" name="bg" placeholder="Enter a Image URL" type="url"> 
                     <button type="button" class="btn btn-primary col-sm-2 mr-1 ml-1" id="checkImageBtn" onclick="is_image()" data-toggle="modal" data-target="#ImageModal">Upload Image</button>
                     <button type="button" class="btn btn-warning col-sm-2  mr-1 ml-1" id="checkImageBtn" onclick="removeImage()">Remove Image</button>
                   </div>
-                  <img style="display: none" id="image" onerror="errorCallback()" onload="loadCallback()" />
 
+                  <!--14/11-->
+                  <div class="container" id="imageErrorMsg">
 
-                  <div class="d-flex justify-content-center m-3 p-2">
-                    <img id="itinerary-image" alt="your image" src="">
                   </div>
                   
-                
+                  <div class="d-flex justify-content-center m-3 p-2">
+                    <img id="image" onerror="errorCallback()" onload="loadCallback()" style="display:none;"/>
+                  </div>
                 </div>
                 <!-- end of content for general information for entire itinerary-->
               
@@ -275,7 +258,6 @@
 
               <div class="form-group" style="margin: 20px 0px;">
                 <label class="h2 dayNum">Day 1</label>
-                <input type="date" class="form-control date" placeholder="" id="day1Date">
               </div>
 
               <!--start of container of activities for day 1-->
@@ -333,29 +315,31 @@
     <!-- end of content in the middle => title + itinerary stuff -->
 
     <div class="container" style="width:80%">
-      <button type="button" class="btn mt-3 mb-3" id="add-day-btn" value="1" style="background-color: #fb8500;">Add another day</button>
+      <button type="button" class="btn btn-primary mt-3 mb-3" id="add-day-btn" value="1">Add another day</button>
     </div>
 
     <!--start of container for price input and confrim btn-->
-    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0;">
-
+    <!--12/11-->
+    <div class="container-fluid p-2" id="submit" style="position: sticky;bottom: 0; margin-left: 0px; background-color:  #023047; overflow: hidden;">
+    <!--end of 12/11-->
           <form>
             <div class="form-row ">
-              <div class="col-sm">
+              <div class="col-md">
               </div>
 
-              <div class="col-sm-2">
+              <div class="col-md-3 d-flex justify-content-center" > 
                 <label class="sr-only" for="price">price</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
-                    <div class="input-group-text">$</div>
+                    <!--12/11-->
+                    <div class="input-group-text">SGD $</div>
                   </div>
                   <input type="number" min="0" class="form-control" id="price" placeholder="price">
                 </div>
               </div>
 
-              <div class="col-sm-1">
-                <button type="button" class="btn btn-primary" onclick="validateData()" data-toggle="modal" data-target="#errors">Submit</button> <!--need to add onclick=submit data and validate data-->
+              <div class="col-md-1 d-flex justify-content-center">
+                <button type="button" class="btn btn-primary" onclick="validateData()" data-toggle="modal" data-target="#errors">Submit</button> 
               </div>
 
             </div>

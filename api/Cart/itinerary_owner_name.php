@@ -18,10 +18,10 @@ $db = $database->getConnection();
 $cart = new Cart($db);
 
 // set ID property of record to read
-$cart->itineraryid = isset($_GET['itineraryid']) ? $_GET['itineraryid'] : die();
+$cart->userid = isset($_GET['userid']) ? $_GET['userid'] : die();
 
 
-$stmt = $cart->detail_insert_itinerary_purchased();
+$stmt = $cart->itinerary_owner_name();
 
 $num = $stmt->rowCount();
 
@@ -37,17 +37,15 @@ if($num > 0) {
         extract($row);
 
         $item = array(
-            "itineraryid" => $itineraryid,
-            "itineraryowner" => $itineraryowner,
-            "tourtitle"=>$tourtitle,
-            "tourcategory"=>$tourcategory,
+            "userid"=> $userid,
+            "email"=> $email,
+            "firstname" => $firstname,
+            "lastname" => $lastname,
+            "password" => $password,
+            "isverified"=>$isverified,
             "country"=>$country,
-            "price"=>$price,
-            "thumbnail"=>$thumbnail,
-            "season"=>$season,
-            "generaldetails"=>$generaldetails
-
-
+            "address"=>$address,
+            "profilepic"=> $profilepic
         );
 
         array_push($result_arr["records"], $item);

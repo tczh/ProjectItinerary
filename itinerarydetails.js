@@ -15,18 +15,23 @@ function showHeader(userid, itineraryid, check){
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var responses = JSON.parse(this.responseText);
+            console.log(responses);
             itineraryowner = responses["records"][0]["itineraryowner"];
             tourtitle = responses["records"][0]["tourtitle"];
             tourcategory = responses["records"][0]["tourcategory"];
             country = responses["records"][0]["country"];
             season = responses["records"][0]["season"];
             thumbnail = responses["records"][0]["thumbnail"];
+            summary = responses["records"][0]["generaldetails"];
             str = "<img src='" + thumbnail+"' style='max-width:100%;max-height:100%;opacity:100%')'>";
             document.getElementById("headerimg").innerHTML = str;
             str =`
                 <h1>${tourtitle}</h1>
                 <h5>Experience ${country} in <span class="font-italic">${season}</span></h5>
-                <h6>Itinerary created by ${itineraryowner}</h6>
+                <span style="font-variant:small-caps;">Itinerary created by ${itineraryowner}</span>
+                <hr>
+                <h3>Summary</h3>
+                <div class='p-3 mt-3' style='box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;'>${summary}</div>
             `;
             if(season == "winter"){
                 document.body.style.backgroundImage = "url('winter.jpg')"
@@ -74,7 +79,6 @@ function showDetails(userid, itineraryid, check){
             str2=`<div class="tab-content" id="nav-tabContent">`;
             
             count=0;
-            console.log(responses);
             for(record of responses['records']){
                 if(!dayList.includes(record['daynumber']) && count ==0){
                     dayList.push(record['daynumber'])

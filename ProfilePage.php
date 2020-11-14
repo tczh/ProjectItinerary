@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
+    
     <style>
         .nav-link{
             color:black;
@@ -44,35 +45,7 @@
             content:'\f006';
             font-family: FontAwesome;
         }
-        .motto {
-            font-style: italic;
-            font-size: 15px;
-            margin-left: 5px;
-        }
-
-        .navbar {
-            /* background-color: #333; */
-            /* color: white; */
-            /* display: flex; */
-            /* top: 0px; */
-            opacity: 0.8;
-            position: fixed;
-            top: 0px;
-        }
-
-        .navbar-nav {
-            /* color: white; */
-            /* padding: 5px; */
-            /* border: 5px; */
-            /* margin: 10px; */
-            /* opacity: 1; */
-            /* font-weight: 400; */
-        }
-
-        .navbar.top {
-            background: transparent;
-        }
-
+        
         .navbar-nav a:hover {
             border-bottom: #f0ad4e 2px solid;
         }
@@ -131,13 +104,16 @@
     
     ?>
     
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark navbar-expand-sm" style="background-color: #023047;">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-        <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
-        <button class='navbar-toggler' data-toggle ='collapse' data-target='#myMenu'>
+        <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
             <span class='navbar-toggler-icon'></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="myMenu">
@@ -235,7 +211,7 @@
             </div>
         </div>
     </div>    
-    <footer class="footer bg-dark">
+    <footer class="footer" style="background-color: #023047; color:white">
       <div class="social">
         <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
         <a href="#"><i class="fab fa-twitter fa-2x"></i></a>

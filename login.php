@@ -1,23 +1,24 @@
 <?php
-    session_start();
-    if (isset($_SESSION["userid"])) {
-        header("Location: index.php");
-    }
-    // var_dump($_SESSION["email"]);
-    // var_dump($_SESSION["userid"]);
+session_start();
+if (isset($_SESSION["userid"])) {
+    header("Location: index.php");
+}
+// var_dump($_SESSION["email"]);
+// var_dump($_SESSION["userid"]);
 
-    // spl_autoload_register(
-    //     function($class){
-    //         require_once "objects/model/$class.php";
-    //     }
-    // );
+// spl_autoload_register(
+//     function($class){
+//         require_once "objects/model/$class.php";
+//     }
+// );
 
-    // $dao = new UserDAO();
-    
+// $dao = new UserDAO();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!-- Custom JavaScript -->
     <script src="login.js"></script>
@@ -35,28 +36,46 @@
     <!-- Google Sign-In -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+   
+    <link rel="stylesheet" href="create_itinerary.css">
+
     <style>
         * {
-               margin: 0;
-               /* padding-top: 50px; */
+            margin: 0;
+            /* padding-top: 50px; */
         }
 
         .marginbox {
-               width: 50%;
-               margin: auto;
-               margin-bottom: 140px;
-               /* margin-bottom: 150px; */
+            width: 50%;
+            margin: auto;
+            margin-bottom: 140px;
+            /* margin-bottom: 150px; */
+            min-width: 450px;
         }
 
         #title {
             text-align: center;
-            margin-top:100px;
+            margin-top: 100px;
         }
-        
+
         #slogan {
             text-align: center;
         }
-
 
 
         #form {
@@ -87,19 +106,11 @@
             /* color: white; */
             /* display: flex; */
             /* top: 0px; */
-            opacity: 0.8;
+
             position: fixed;
             top: 0px;
         }
 
-        .navbar-nav {
-            /* color: white; */
-            /* padding: 5px; */
-            /* border: 5px; */
-            /* margin: 10px; */
-            /* opacity: 1; */
-            /* font-weight: 400; */
-        }
 
         .navbar.top {
             background: transparent;
@@ -131,7 +142,7 @@
             color: #f0ad4e;
         }
 
-        .footer .social > * {
+        .footer .social>* {
             margin-left: 15px;
             margin-right: 15px;
         }
@@ -140,18 +151,21 @@
             background: #333;
             color: #fff;
         }
-
     </style>
 </head>
+
 <body onload='init()'>
-<div class="marginbox">
-<nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark navbar-expand-md" style="background-color: #023047;">
         <!-- Navbar content -->
-        <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
-        <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
+        <a class="navbar-brand" href="index.php">
+            <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span>
+            <span class="text-warning">Tim's</span> Travel Agent
+            <!-- <small>Where your itineraries come to life</small> -->
+            <!-- <em class="motto">Where your itineraries come to life</em> -->
         </a>
 
-        <button class='navbar-toggler' data-toggle ='collapse' data-target='#myMenu'>
+
+        <button class='navbar-toggler' data-toggle='collapse' data-target='#myMenu'>
             <span class='navbar-toggler-icon'></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="myMenu">
@@ -159,37 +173,41 @@
                 <!-- Need to update href links when they are ready-->
                 <a class='nav-item nav-link text-white' href=index.php>Home</a>
                 <a class='nav-item nav-link text-white' href=about.php>About</a>
+
                 <?php
                 if (!isset($_SESSION["userid"])) {
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
-                }
-                else {
-                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>";
+                } else {
+                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
                 }
                 ?>
 
-                <a class='nav-item nav-link text-white' href=#>Cart</a>
+                <a class='nav-item nav-link text-white' href=checkout.html>Cart</a>
 
                 <?php
-                    if (isset($_SESSION["userid"])) {
-                        echo "<a class='nav-item nav-link text-white' href='objects/ProcessLogout.php'>Log Out</a>";
-                    }
+                if (isset($_SESSION["userid"])) {
+                    echo "<a class='nav-item nav-link text-white' href='objects/ProcessLogout.php'>Log Out</a>";
+                }
                 ?>
             </div>
         </div>
     </nav>
 
-    <h1 id="title">
-        Tim's Travel Agent
-   </h1>
 
-    <p id="slogan">
-        Where your itineraries come to life
-    </p>
 
-    <form id="form" action='objects/ProcessLogin.php' method='GET'>
-        
-        <?php
+    <div class="marginbox">
+
+        <h1 id="title">
+            Tim's Travel Agent
+        </h1>
+
+        <p id="slogan">
+            Where your itineraries come to life
+        </p>
+
+        <form id="form" action='objects/ProcessLogin.php' method='GET'>
+
+            <?php
             if (isset($_SESSION['check']) and $_SESSION['check'] == false) {
                 echo "<p class='red'>Incorrect Username or Password</p>";
                 unset($_SESSION['check']);
@@ -198,43 +216,43 @@
                 echo "<p class='red'>Please enter a password</p>";
                 unset($_SESSION['nopassword']);
             }
-        ?>
+            ?>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="email">Email</span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="email">Email</span>
+                </div>
+                <input type="text" id="emailinput" name='email' class="form-control" placeholder="Example: abc@xyz.com" aria-label="email" aria-describedby="email">
             </div>
-            <input type="text" id="emailinput" name='email' class="form-control" placeholder="Example: abc@xyz.com" aria-label="email" aria-describedby="email">
-        </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="password">Password</span>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="password">Password</span>
+                </div>
+                <input type="password" id="passwordinput" name='password' class="form-control" aria-label="password" aria-describedby="password">
             </div>
-            <input type="password" id="passwordinput" name='password' class="form-control" aria-label="password" aria-describedby="password">
-        </div>
 
-        <button type="submit" disabled class="btn btn-info btn-block">Log In</button>
+            <button type="submit" disabled class="btn btn-info btn-block">Log In</button>
 
-        <!-- <div class="form-group form-check">
+            <!-- <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="staysignedin">
             <label class="form-check-label" for="staysignedin">Stay signed in</label>
         </div> -->
 
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </form>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </form>
 
-    <p id='create'><a href='signup.php'>Create an account</a></p>
-</div>
+        <p id='create'><a href='signup.php'>Create an account</a></p>
+    </div>
 
-    <footer class="footer bg-dark">
-      <div class="social">
-        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-        <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
-        <a href="https://www.linkedin.com/in/timothy-chia-a23858100/"><i class="fab fa-linkedin fa-2x"></i></a>
-      </div>
-      <p>Copyright &copy; 2020 - Tim's Travel Agent</p>
+    <footer class="footer" style="background-color: #023047; color:white;">
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/timothy-chia-a23858100/"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+        <p>Copyright &copy; 2020 - Tim's Travel Agent</p>
     </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -247,23 +265,24 @@
         $("#passwordinput").keyup(function(event) {
             validateInputs();
         });
-    
+
         $("#emailinput").keyup(function(event) {
             validateInputs();
         });
-    
-        function validateInputs(){
+
+        function validateInputs() {
             var disableButton = false;
-    
+
             var val1 = $("#passwordinput").val();
             var val2 = $("#emailinput").val();
-    
-            if(val1.length == 0 || val2.length == 0)
+
+            if (val1.length == 0 || val2.length == 0)
                 disableButton = true;
-    
+
             $('button').attr('disabled', disableButton);
         }
     </script>
 
 </body>
+
 </html>
