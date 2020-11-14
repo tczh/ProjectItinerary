@@ -16,9 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="index.js"></script>
-    
 
     <title>Welcome To Tim's Travel Agent</title>
 
@@ -28,18 +27,13 @@
                /* padding: 0; */
         }
 
-        .motto {
-            font-style: italic;
-            font-size: 15px;
-            margin-left: 5px;
-        }
-
         .hero{
             background-image: url("scenery.jpg");
             background-repeat: no-repeat;
             background-position: center;
             width: 100%;
             height: 100%;
+            margin-bottom: 12px;
             /* margin-left: auto;
             margin-right: auto; */
             /* padding-top: 100px;
@@ -50,6 +44,7 @@
             padding:20px;
             border-radius: 20px;
             margin: 150px;
+            min-width: 320px;
         }
 
         #searchText{
@@ -57,72 +52,13 @@
             font-size: 30px;
         }
 
-        .navbar {
-            /* background-color: #333; */
-            /* color: white; */
-            /* display: flex; */
-            /* top: 0px; */
-            opacity: 0.8;
-            position: fixed;
-            top: 0px;
-        }
-
-        .navbar-nav {
-            /* color: white; */
-            /* padding: 5px; */
-            /* border: 5px; */
-            /* margin: 10px; */
-            /* opacity: 1; */
-            /* font-weight: 400; */
-        }
-
-        .navbar.top {
-            background: transparent;
-        }
-
-        .navbar-nav a:hover {
-            border-bottom: #f0ad4e 2px solid;
-        }
-
-        .nav-item {
-            margin-right: 20px;
-        }
-
-        /* Footer */
-        .footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 200px;
-        }
-
-        .footer a {
-            color: #fff;
-        }
-
-        .footer a:hover {
-            color: #f0ad4e;
-        }
-
-        .footer .social > * {
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        .bg-dark {
-            background: #333;
-            color: #fff;
-        }
-
         #price-range {
             /* padding: 0.5px; */
         }
 
-        #date-picker {
+        /* #date-picker {
             margin-bottom: 16px;
-        }
+        } */
 
         #categories {
             margin-top: 10px;
@@ -140,16 +76,27 @@
             margin-right: 10%;
         }
 
+        #nextback {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #nextbtn, #backbtn {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
     </style>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="super.css">
 </head>
 <body onload="load()">
     
     <!-- Navbar collapse if width is sm-->
     <header class="hero">
-    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-sm">
+    <nav id="navbar" class="navbar top fixed-top navbar-dark bg-dark navbar-expand-md">
         <!-- Navbar content -->
         <a class="navbar-brand" href="index.php"><span class="text-warning">Tim's</span> Travel Agent
         <span class="text-warning"><i class="fas fa-globe-americas fa-2x"></i></span><em class="motto">Where your itineraries come to life</em>
@@ -168,11 +115,10 @@
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
                 }
                 else {
-                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>
-                    <a class='nav-item nav-link text-white' href='create_itinerary.html'>Create Itinerary</a>";
+                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
                 }
                 ?>
-                <a class='nav-item nav-link text-white' href='checkout.html'>Cart</a>
+                <a class='nav-item nav-link text-white' href=#>Cart</a>
 
                 <?php
                     if (isset($_SESSION["userid"])) {
@@ -226,29 +172,58 @@
                 <div class="form-group">
                     <select class="form-control" id="pricerange">
                     <option value='0'>Price Range</option>
-                    <option value='1'>Less than $100</option>
-                    <option value='2'>$100 - $199.99</option>
-                    <option value='3'>$200 - $299.99</option>
-                    <option value='4'>$300 - $399.99</option>
-                    <option value='5'>$400 - $500</option>
-                    <option value='6'>More than $500</option>
+                    <option value='1'>Less than $10</option>
+                    <option value='2'>$10 - $19.99</option>
+                    <option value='3'>$20 - $29.99</option>
+                    <option value='4'>$30 - $39.99</option>
+                    <option value='5'>$40 - $49.99</option>
+                    <option value='6'>$50 or more</option>
                     </select>
                 </div>
 
-                <div class="input-group mb-3">
+                <!-- Date Range -->
+                <!-- <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Date Range</span>
                     </div>
                     <input type="text" class="form-control" id="daterange" name="daterange" value="11/11/2020 - 11/30/2020">
-                </div>
+                </div> -->
+
+                <!-- <div class="form-group">
+                    <select class="form-control" id="month">
+                        <option>Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+                </div> -->
 
                 <div class="form-group">
                     <select class="form-control" id="season">
-                    <option>Season</option>
-                    <option>Spring</option>
-                    <option>Summer</option>
-                    <option>Autumn</option>
-                    <option>Winter</option>
+                        <option>Season</option>
+                        <option>Spring</option>
+                        <option>Summer</option>
+                        <option>Autumn</option>
+                        <option>Winter</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" id="category">
+                    <option>Category</option>
+                    <option>Luxury</option>
+                    <option>Budget</option>
+                    <option>Nature</option>
+                    <option>City</option>
+                    <option>Others</option>
                     </select>
                 </div>
 
@@ -283,19 +258,19 @@
             </a>
         </div>
     </div> -->
-    <div id="categories">
+    <!-- <div id="categories"> -->
         <!-- <span class="badge badge-pill badge-info">Luxury</span>
         <span class="badge badge-pill badge-info">Budget</span>
         <span class="badge badge-pill badge-info">Nature</span>
         <span class="badge badge-pill badge-info">City</span>
         <span class="badge badge-pill badge-info">Others</span> -->
 
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('luxury')">Luxury</button>
+        <!-- <button type="button" class="btn btn-info categories" onclick="filterCategory('luxury')">Luxury</button>
         <button type="button" class="btn btn-info categories" onclick="filterCategory('budget')">Budget</button>
         <button type="button" class="btn btn-info categories" onclick="filterCategory('nature')">Nature</button>
         <button type="button" class="btn btn-info categories" onclick="filterCategory('city')">City</button>
-        <button type="button" class="btn btn-info categories" onclick="filterCategory('others')">Others</button>
-    </div>
+        <button type="button" class="btn btn-info categories" onclick="filterCategory('others')">Others</button> -->
+    <!-- </div> -->
     
     <div id="cards">
     <?php
@@ -378,6 +353,11 @@
 
 
     <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+    <div class='d-none' id='jsitin'></div>
+    <div id="nextback">
+        <button class="btn btn-warning" id="backbtn" disabled onclick="back()">Back</button>
+        <button class="btn btn-warning" id="nextbtn" onclick="next()">Next</button>
+    </div
 
     <!--Footer-->
     <footer class="footer bg-dark">
@@ -389,6 +369,8 @@
       </div>
       <p>Copyright &copy; 2020 - Tim's Travel Agent</p>
     </footer>
+
+    <div id='counter' class='d-none'>0</div>
     
     <!-- <script>
         const navbar = document.getElementById('navbar');
@@ -422,7 +404,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-    <script>
+    <!-- Date Range -->
+    <!-- <script>
         $(function() {
             $('input[name="daterange"]').daterangepicker({
             opens: 'left'
@@ -430,12 +413,76 @@
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
             });
         });
-    </script>
+    </script> -->
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
-    var jsItinerary = <?php echo json_encode($itineraryArray); ?>;
+    var jsItineraryWithoutRate = <?php echo json_encode($itineraryArray); ?>;
     // var obj = JSON.parse(obj);
+    // console.log(jsItineraryWithoutRate);
+
+    // jsItinerary = []
+    rateArray = []
+    for (itinerary of jsItineraryWithoutRate) {
+        // console.log(itinerary);
+        
+        url = "api/itinerarypage/getItineraryReview.php?itineraryid=" + itinerary['itineraryid'];
+        axios.get(url)
+        .then(response =>{
+            
+            // console.log(response);
+            
+            post_array = response.data.records
+            count = post_array.length
+            rate = 0
+            for (record of post_array){
+                rate += parseInt(record['rate'])
+            }
+            // console.log(rate);
+            rate = rate/count
+            // console.log(rate);
+            // if(count<=3){
+            //     for (record of post_array){
+            //         this.commentsArray.push(record)
+            //     }
+            // }
+            // else{
+            //     for (i=1; i<4; i++){
+            //         this.commentsArray.push(post_array[count-i])
+            //     }
+            // }
+            rateArray.push(rate.toFixed(2));
+
+            console.log(rate);
+
+            // itinerary['rate'] = rate;
+
+            // console.log(itinerary);
+            
+            // jsItinerary.push(itinerary);
+
+            // console.log(jsItinerary)
+            // document.getElementById('rateArray').innerHTML = rateArray;
+        })
+    }
+
+    // rateArray = document.getElementById('rateArray');
+    console.log(rateArray)
+
+    
+
+    jsItinerary = []
+    count = 0;
+    for (itinerary of jsItineraryWithoutRate) {
+        console.log(rateArray[count])
+        jsItinerary.push(itinerary)
+        jsItinerary[count]['rate'] = rateArray[count];
+        count += 1;
+    }
+
     console.log(jsItinerary);
+
+    // console.log(rateArray);
 
     function load() {
         var input = document.getElementById("locationInput");
@@ -445,75 +492,330 @@
     }
 
     function filter() {
+        jsItinerary = <?php echo json_encode($itineraryArray); ?>;
+
+        // rateArray = []
+        // for (itinerary of jsItineraryWithoutRate) {
+            
+        //     url = "api/itinerarypage/getItineraryReview.php?itineraryid=" + itinerary['itineraryid'];
+        //     axios.get(url)
+        //     .then(response =>{
+                
+        //         post_array = response.data.records
+        //         count = post_array.length
+        //         rate = 0
+        //         for (record of post_array){
+        //             rate += parseInt(record['rate'])
+        //         }
+        //         rate = rate/count
+        //         rateArray.push(rate);
+
+        //         console.log(rate);
+        //     })
+        // }
+
         var country = document.getElementById('locationInput').value;
         var price = document.getElementById('pricerange').value;
-        var daterange = document.getElementById('daterange').value;
+        // var daterange = document.getElementById('daterange').value;
         var season = document.getElementById('season').value;
+        var category = document.getElementById('category').value;
 
-        var str = '<div class="card-columns">'
-        for (itinerary of jsItinerary) {
-            console.log(country);
-            console.log(itinerary['country']);
-            if (country != '' && country.toLowerCase() != itinerary['country'].toLowerCase()) {
+        tempArray = rateArray.slice();
+   
+        var str = '<div class="card-columns">';
+
+        arrayItinerary = []
+
+        // console.log(jsItinerary);
+        count = 0
+        for (i=0;i<jsItinerary.length;i++) {
+            // console.log(country);
+            // console.log(itinerary['country']);
+            if (country != '' && country.toLowerCase() != jsItinerary[i]['country'].toLowerCase()) {
+                tempArray.splice(i,1);
                 continue;
             }
 
-            if (season != 'Season' && season.toLowerCase() != itinerary['season'].toLowerCase()) {
+            if (season != 'Season' && season.toLowerCase() != jsItinerary[i]['season'].toLowerCase()) {
+                tempArray.splice(i,1);
                 continue;
             }
 
-            console.log(price);
-            console.log(itinerary['price']);
+            // console.log(itinerary);
+            // console.log(category.toLowerCase());
+            // console.log(itinerary['tourcategory'].toLowerCase());
+            if (category != 'Category' && category.toLowerCase() != jsItinerary[i]['tourcategory'].toLowerCase().split(' ')[0]) {
+                tempArray.splice(i,1);
+                continue;
+            }
+
+            // console.log(price);
+            // console.log(itinerary['price']);
             // console.log(priceArray[(0)][0]));
 
-            var priceArray = [[0,99.99], [100, 199.99], [200,299.99], [300,399.99], [400,500], [500, 9999999999]];
+            var priceArray = [[0,9.99], [10, 19.99], [20,29.99], [30,39.99], [40,49.99], [50, 9999999999]];
 
-            console.log(priceArray[(0)][0]);
+            // console.log(priceArray[(0)][0]);
 
-            if (price != 0 && ((parseFloat(itinerary['price']) < priceArray[(price-1)][0]) || (parseFloat(itinerary['price']) > priceArray[(price-1)][1]))) {
+            if (price != 0 && ((parseFloat(jsItinerary[i]['price']) < priceArray[(price-1)][0]) || (parseFloat(jsItinerary[i]['price']) > priceArray[(price-1)][1]))) {
+                tempArray.splice(i,1);
                 continue;
             }
+
+            arrayItinerary.push(jsItinerary[i]);
             
+            
+        }
+
+        jsItinerary = arrayItinerary;
+        document.getElementById("jsitin").innerHTML = jsItinerary;
+        
+        for(i=0;i<jsItinerary.length;i++){
             str += '<div class="card">';
-            str += '<img class="card-img-top" src="images/' + itinerary['thumbnail'] + '" alt="' + itinerary['tourtitle'] + '">';
+            str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
             str += '<div class="card-body">';
-            str += '<h5 class="card-title">' + itinerary['tourtitle'] + '</h5>';
-            str += '<p class="card-text">Price: $' + itinerary['price'] + '</p>';
+            str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
+            str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+            str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
+            str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
+            str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
             str += '<a href="#" class="btn btn-warning">View More</a>';
             str += '</div></div>';
+            count++
+            if(count==3){
+                break
+            }
         }
+
+        console.log(jsItinerary, 'fuck');
+
         str += '</div>';
 
         document.getElementById("cards").innerHTML = str;
-    }
 
-    function filterCategory(cat) {
-        str = '<div class="card-columns">'
-        for (itinerary of jsItinerary) {
-            if (cat != itinerary['tourcategory']) {
-                continue;
+        console.log(tempArray, 'fk');
+
+        counts = 0
+        for(i=0;i<jsItinerary.length;i++){
+            document.getElementById(`rating${i}`).innerHTML = tempArray[i];
+            counts++
+            if(counts ==3){
+                break;
             }
-            
-            str += '<div class="card">';
-            str += '<img class="card-img-top" src="images/' + itinerary['thumbnail'] + '" alt="' + itinerary['tourtitle'] + '">';
-            str += '<div class="card-body">';
-            str += '<h5 class="card-title">' + itinerary['tourtitle'] + '</h5>';
-            str += '<p class="card-text">Price: $' + itinerary['price'] + '</p>';
-            str += '<a href="#" class="btn btn-warning">View More</a>';
-            str += '</div></div>';
         }
-        str += '</div>';
+        document.getElementById('counter').innerText = 0
+        $('#backbtn').attr('disabled', true);
 
-        document.getElementById("cards").innerHTML = str;
+        console.log(jsItinerary.length)
+        if (jsItinerary.length <= 3) {
+            $('#nextbtn').attr('disabled', true);
+        }
+        else{
+            $('#nextbtn').attr('disabled', false);
+        }
     }
-</script>
 
-<!-- convert session userid to javascript -->
-<script type="text/javascript">
-    var jsSessionUserId = <?php echo json_encode($_SESSION['userid']); ?>;
-    sessionStorage.setItem("userid",jsSessionUserId);
-    // console.log(jsSessionUserId);
-    // console.log("HELLO");
+    function next() {
+  
+        if (document.getElementById('counter').innerText < jsItinerary.length) {
+            
+            var country = document.getElementById('locationInput').value;
+            var price = document.getElementById('pricerange').value;
+            // var daterange = document.getElementById('daterange').value;
+            var season = document.getElementById('season').value;
+            var category = document.getElementById('category').value;
+            document.getElementById('counter').innerText = parseInt(document.getElementById('counter').innerText) +3
+            var str = '<div class="card-columns">';
+
+            // console.log(jsItinerary);
+            // console.log(document.getElementById('counter').innerText);
+
+            count = parseInt(document.getElementById('counter').innerText);
+            console.log(jsItinerary);
+            console.log(count)
+            counts = 0;
+            for (i=count;i<jsItinerary.length;i++) {
+                // console.log(country);
+                // console.log(itinerary['country']);
+                if (country != '' && country.toLowerCase() != jsItinerary[i]['country'].toLowerCase()) {
+                    continue;
+                }
+
+                if (season != 'Season' && season.toLowerCase() != jsItinerary[i]['season'].toLowerCase()) {
+                    continue;
+                }
+
+                // console.log(itinerary);
+                // console.log(category.toLowerCase());
+                // console.log(itinerary['tourcategory'].toLowerCase());
+                if (category != 'Category' && category.toLowerCase() != jsItinerary[i]['tourcategory'].toLowerCase().split(' ')[0]) {
+                    continue;
+                }
+
+                // console.log(price);
+                // console.log(itinerary['price']);
+                // console.log(priceArray[(0)][0]));
+
+                var priceArray = [[0,9.99], [10, 19.99], [20,29.99], [30,39.99], [40,49.99], [50, 9999999999]];
+
+                // console.log(priceArray[(0)][0]);
+
+                if (price != 0 && ((parseFloat(jsItinerary[i]['price']) < priceArray[(price-1)][0]) || (parseFloat(jsItinerary[i]['price']) > priceArray[(price-1)][1]))) {
+                    continue;
+                }
+                
+                str += '<div class="card">';
+                str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
+                str += '<div class="card-body">';
+                str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
+                str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+                str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
+                str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
+                str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
+                str += '<a href="#" class="btn btn-warning">View More</a>';
+                str += '</div></div>';
+                counts++
+                if(counts== 3){
+                    break;
+                }
+
+            }
+            str += '</div>';
+
+            document.getElementById("cards").innerHTML = str;
+        }
+        check=parseInt(document.getElementById('counter').innerText);
+        counts = 0;
+        console.log(check,'hi');
+        console.log(jsItinerary.length-3,'gi');
+
+
+        for(i=check;i<jsItinerary.length;i++){
+            document.getElementById(`rating${i}`).innerHTML = tempArray[i];
+            counts++;
+            if(counts==3){
+                break;
+            }
+        }
+        
+        // disable button
+
+        if (check >= (jsItinerary.length)-3) {
+            
+            $('#nextbtn').attr('disabled', true);
+        }
+        if (check != 0) {
+            $('#backbtn').attr('disabled', false);
+        }
+    
+        
+    }
+
+    function back() {
+        if (document.getElementById('counter').innerText > 0) {
+            var country = document.getElementById('locationInput').value;
+            var price = document.getElementById('pricerange').value;
+            // var daterange = document.getElementById('daterange').value;
+            var season = document.getElementById('season').value;
+            var category = document.getElementById('category').value;
+            document.getElementById('counter').innerText = parseInt(document.getElementById('counter').innerText) -3
+            var str = '<div class="card-columns">';
+
+            // console.log(jsItinerary);
+            console.log(document.getElementById('counter').innerText);
+            count = parseInt(document.getElementById('counter').innerText);
+            counter = 0
+            // console.log(count)
+            for (i=count;i<jsItinerary.length;i++) {
+                // console.log(country);
+                // console.log(itinerary['country']);
+                if (country != '' && country.toLowerCase() != jsItinerary[i]['country'].toLowerCase()) {
+                    continue;
+                }
+
+                if (season != 'Season' && season.toLowerCase() != jsItinerary[i]['season'].toLowerCase()) {
+                    continue;
+                }
+
+                // console.log(itinerary);
+                // console.log(category.toLowerCase());
+                // console.log(itinerary['tourcategory'].toLowerCase());
+                if (category != 'Category' && category.toLowerCase() != jsItinerary[i]['tourcategory'].toLowerCase().split(' ')[0]) {
+                    continue;
+                }
+
+                // console.log(price);
+                // console.log(itinerary['price']);
+                // console.log(priceArray[(0)][0]));
+
+                var priceArray = [[0,9.99], [10, 19.99], [20,29.99], [30,39.99], [40,49.99], [50, 9999999999]];
+
+                // console.log(priceArray[(0)][0]);
+
+                if (price != 0 && ((parseFloat(jsItinerary[i]['price']) < priceArray[(price-1)][0]) || (parseFloat(jsItinerary[i]['price']) > priceArray[(price-1)][1]))) {
+                    continue;
+                }
+                
+                str += '<div class="card">';
+                str += '<img class="card-img-top" src="images/' + jsItinerary[i]['thumbnail'] + '" alt="' + jsItinerary[i]['tourtitle'] + '">';
+                str += '<div class="card-body">';
+                str += '<h5 class="card-title">' + jsItinerary[i]['tourtitle'] + '</h5>';
+                str += `<p class="card-text">Rating: <span id='rating${i}'> </span> <i class='fa fa-star' style='color:orange'></i></p>`;
+                str += '<p class="card-text">Price: $' + jsItinerary[i]['price'] + '</p>';
+                str += '<p class="card-text">Category: ' + jsItinerary[i]['tourcategory'] + '</p>';
+                str += '<p class="card-text">Season: ' + jsItinerary[i]['season'] + '</p>';
+                str += '<a href="#" class="btn btn-warning">View More</a>';
+                str += '</div></div>';
+                counter++
+                if(counter==3){
+                    break
+                }
+            }
+            str += '</div>';
+
+            document.getElementById("cards").innerHTML = str;
+        }
+
+        console.log(jsItinerary.length);
+        console.log(tempArray, 'fk');
+
+        check=parseInt(document.getElementById('counter').innerText);
+        counts = 0
+        for(i=check;i<jsItinerary.length;i++){
+            document.getElementById(`rating${i}`).innerHTML = tempArray[i];
+            counts++;
+            if(counts==3){
+                break;
+            }
+        }
+
+        if (check == 0) {
+            $('#backbtn').attr('disabled', true);
+        }
+        if (check <= jsItinerary.length-3) {
+            $('#nextbtn').attr('disabled', false);
+        }
+    }
+
+    // function filterCategory(cat) {
+    //     str = '<div class="card-columns">'
+    //     for (itinerary of jsItinerary) {
+    //         if (cat != itinerary['tourcategory']) {
+    //             continue;
+    //         }
+            
+    //         str += '<div class="card">';
+    //         str += '<img class="card-img-top" src="images/' + itinerary['thumbnail'] + '" alt="' + itinerary['tourtitle'] + '">';
+    //         str += '<div class="card-body">';
+    //         str += '<h5 class="card-title">' + itinerary['tourtitle'] + '</h5>';
+    //         str += '<p class="card-text">Price: $' + itinerary['price'] + '</p>';
+    //         str += '<a href="#" class="btn btn-warning">View More</a>';
+    //         str += '</div></div>';
+    //     }
+    //     str += '</div>';
+
+    //     document.getElementById("cards").innerHTML = str;
+    // }
 </script>
 
 </body>
