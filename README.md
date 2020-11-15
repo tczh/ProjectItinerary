@@ -19,7 +19,7 @@ Github
 The application can be used to view the list of available itineraries, purchase an itinerary, and create itinerary. Users will also be able to leave reviews and update their account information. 
 Go to https://localhost/app to start.
 
-<!-- TECHNOLOGIES USED-->
+## TECHNOLOGIES USED
 HTML, Bootstrap, Javascript, Vue.js, PHP, Angular.JS, CSS, JSON, External Libraries (i.e anychart in Statistics.html)
 
 
