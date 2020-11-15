@@ -3,7 +3,7 @@
 ProjectItinerary is a web-application development that showcases what individual travellers wants.
 
 
-INSTALLATION
+## INSTALLATION
 Github
 Clone the Repo
 git clone https://github.com/tczh/ProjectItinerary
