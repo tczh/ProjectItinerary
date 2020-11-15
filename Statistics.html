@@ -39,7 +39,7 @@
         </form>
     </nav>
     <ul ng-repeat="country in AllCountries">
-        <li>{{country}}</li>
+        <li class='d-none'>{{country}}</li>
     </ul>
 </div>
 
@@ -53,6 +53,8 @@
             var results = $scope.Topic;
             console.log(results);
             sessionStorage.setItem('country',results);
+            var url = `Statistics.html`;
+            location.href = url;
             
         }
         
@@ -62,16 +64,21 @@
     
 </script>
 
-<div id="container" style="width: 100%; height: 100%" class="container-fluid"></div>
+<div id="container" style="width: 100%; height: 100%" class="container-fluid">
+<div id="appearButton"></div></div>
 <script>
     var country = sessionStorage.getItem('country');
     country = country.toLowerCase();
     if(country != '' || country != null){
-        console.log("Entered here");
-        RetrieveAPI(country)
+        RetrieveAPI(country);
+
     }
     else{
         console.log("Please retype another country");
+    }
+    function reload(){
+        var url = `Statistics.html`;
+        location.href = url;
     }
     function RetrieveAPI(country) {
         var request = new XMLHttpRequest();
