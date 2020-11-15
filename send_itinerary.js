@@ -235,8 +235,8 @@ function InsertItinerary(itineraryOwner, tourTitle, tourCategory, country,price,
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert("Successfully inserted itinerary...!");
-            console.log(this);
+            var url = "index.php";
+            location.href = url;
         }
     }
 
@@ -336,8 +336,8 @@ function InsertDetail(itineraryid, itineraryowner,daynumber, location, activity,
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert("Successfully inserted itinerary details...!");
-            console.log(this);
+       
+       
         }
     }
 

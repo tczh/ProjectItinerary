@@ -188,17 +188,18 @@ spl_autoload_register(
                 <?php
                 if (!isset($_SESSION["userid"])) {
                     echo "<a class='nav-item nav-link text-white' href='login.php'>Login</a>";
-                } else {
-                    echo "<a class='nav-item nav-link text-white' href='#'>Profile</a>";
+                }
+                else {
+                    echo "<a class='nav-item nav-link text-white' href='ProfilePage.php'>Profile</a>
+                    <a class='nav-item nav-link text-white' href='create_itinerary.html'>Create Itinerary</a>";
                 }
                 ?>
-
-                <a class='nav-item nav-link text-white' href=#>Cart</a>
+                <a class='nav-item nav-link text-white' href='checkout.html'>Cart</a>
 
                 <?php
-                if (isset($_SESSION["userid"])) {
-                    echo "<a class='nav-item nav-link text-white' href='objects/ProcessLogout.php'>Log Out</a>";
-                }
+                    if (isset($_SESSION["userid"])) {
+                        echo "<a class='nav-item nav-link text-white' href='objects/ProcessLogout.php'>Log Out</a>";
+                    }
                 ?>
             </div>
         </div>

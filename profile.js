@@ -512,16 +512,15 @@ function displayCreatedItinerary(userid){
 
 
 function displayBoughtItinerary(userid){
-    console.log("here");
     var request = new XMLHttpRequest();
-
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var responses = JSON.parse(this.responseText);
             str=`<div class="row">`;
             count =0;
-            
+            console.log(userid,'1');
             for (record of responses["records"]){
+
                 console.log("Here");
                 str+=`
                 <div class="col-sm-6">
@@ -538,7 +537,7 @@ function displayBoughtItinerary(userid){
                         <div class="btn-group btn-block">
                             <a href="ItineraryDetails.php?userid=${userid}&itineraryid=${record["itineraryid"]}" class="btn btn-primary">View Itinerary</a>
                             
-                            <button type="button" data-toggle="modal" data-target="#reviewModal${count}" class="btn btn-primary" onClick="Process()">Leave Review</a>
+                            <button type="button" data-toggle="modal" data-target="#reviewModal${count}" class="btn btn-primary">Leave Review</a>
                         </div>
                     </div>
                 </div>
@@ -571,7 +570,7 @@ function displayBoughtItinerary(userid){
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" onClick="processReview(${userid},${record['itineraryid']})">Submit Review</button>
+                                    <button type="button" class="btn btn-primary" onClick="processReview(${record['itineraryid']}); window.location.href='ProfilePage.php'">Submit Review</button>
                                 </div>
                             </form>
                         </div>
@@ -594,8 +593,8 @@ function displayBoughtItinerary(userid){
     request.send();
 }
 
-function processReview(userid, itineraryid){
-
+function processReview(itineraryid){
+    var userid = document.getElementById('userid2').innerText.trim(); 
     sessionStorage.setItem("userid", userid);
     sessionStorage.setItem("itineraryid", itineraryid);
     userid = sessionStorage.getItem("userid");
@@ -622,8 +621,11 @@ function processReview(userid, itineraryid){
         console.log("Entered here");
         //Change this API to Only payment table, itinerary table & review table joined
         // Check by paymentid -> if review table is empty -> then insert with status reviewed -> else dont do anything
-        InsertDirectItineraryAPI(userid, itineraryid);
-        
+        rate = sessionStorage.getItem('rate');
+        message = sessionStorage.getItem('comments');
+        date = Date(Date.now()); 
+        status = "Reviewed";
+        insertRecords('DEFAULT',userid,itineraryid, rate, status,date, message);
     }
     
 function InsertDirectItineraryAPI(userid,itineraryid){
@@ -684,7 +686,7 @@ function insertRecords(reviewid,userid,itineraryid,rate,status,date, message) {
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log("Successfully inserted");
-            var url = `/groupproject/ProfilePage.php?userid=` + userid;
+            var url = `ProfilePage.php?userid=` + userid;
             // Need to change it to retrieve all itineraries first
             location.href = url;
             //callReviewDetailsAPI('DEFAULT',reviewid,itinerary_details, rate, comments);
@@ -700,7 +702,7 @@ function insertRecords(reviewid,userid,itineraryid,rate,status,date, message) {
 }
 function Redirect(){
     userid = sessionStorage.getItem('userid')
-    var url = `/groupproject/NewReview.html?userid=` + userid;
+    var url = `NewReview.html?userid=` + userid;
     // Need to change it to retrieve all itineraries first
     location.href = url;
     console.log("here");
