@@ -6,9 +6,7 @@ ProjectItinerary is a web-application development that showcases what individual
 ## INSTALLATION
 Github
 
-1) Clone the Repo
-
-git clone https://github.com/tczh/ProjectItinerary
+1) Clone the Repo (git clone https://github.com/tczh/ProjectItinerary)
 
 2) Open the zip file ProjectItinerary-Master, open the folder ProjectItineary-Master
 
