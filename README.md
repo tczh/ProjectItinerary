@@ -36,9 +36,13 @@ View chart
 <!-- CONTACT -->
 ## Contact
 Chai Jia Qi - jiaqi.chai.2019@sis.smu.edu.sg
+
 Chua Xiu Ling - xlchua.2019@sis.smu.edu.sg
+
 Elvis Leong Wei Kiat - elvis.leong.2019@sis.smu.edu.sg
+
 Ng Wei Cheng - wcng.2019@sis.smu.edu.sg
+
 Timothy Chia Zi Hui - timothychia.2019@sis.smu.edu.sg
 
 Project Link:
