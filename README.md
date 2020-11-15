@@ -20,17 +20,29 @@ The application can be used to view the list of available itineraries, purchase 
 Go to https://localhost/app to start.
 
 You can create your own account or login using
+
 email: tim@gmail.com pw: timchia
+
 email: elvis@gmail.com pw: timchia
+
 email: xiuling@gmail.com pw: timchia
+
 email: jiaqi@gmail.com pw: timchia
+
 email: biguang@gmail.com pw: timchia
+
 email: weicheng@gmail.com pw: timchia
+
 email: marcus@gmail.com pw: timchia
+
 email: david@gmail.com pw: timchia
+
 email: john@gmail.com pw: timchia
+
 email: mary@gmail.com pw: timchia
+
 email: kz@gmail.com pw: timchia
+
 email: marcus@gmail.com pw: timchia
 
 ## TECHNOLOGIES USED
