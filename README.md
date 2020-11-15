@@ -19,6 +19,20 @@ Github
 The application can be used to view the list of available itineraries, purchase an itinerary, and create itinerary. Users will also be able to leave reviews and update their account information. 
 Go to https://localhost/app to start.
 
+You can create your own account or login using
+email: tim@gmail.com pw: timchia
+email: elvis@gmail.com pw: timchia
+email: xiuling@gmail.com pw: timchia
+email: jiaqi@gmail.com pw: timchia
+email: biguang@gmail.com pw: timchia
+email: weicheng@gmail.com pw: timchia
+email: marcus@gmail.com pw: timchia
+email: david@gmail.com pw: timchia
+email: john@gmail.com pw: timchia
+email: mary@gmail.com pw: timchia
+email: kz@gmail.com pw: timchia
+email: marcus@gmail.com pw: timchia
+
 ## TECHNOLOGIES USED
 HTML, Bootstrap, Javascript, Vue.js, PHP, Angular.JS, CSS, JSON, External Libraries (i.e anychart in Statistics.html)
 
