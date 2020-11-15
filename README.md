@@ -20,7 +20,7 @@ The application can be used to view the list of available itineraries, purchase 
 Go to https://localhost/app to start.
 
 <!-- TECHNOLOGIES USED-->
-HTML, Bootstrap, Javascript, Vue.js, PHP, Angular.JS, CSS
+HTML, Bootstrap, Javascript, Vue.js, PHP, Angular.JS, CSS, JSON, External Libraries (i.e anychart in Statistics.html)
 
 
 STATISTICS.HTML
