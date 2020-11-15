@@ -5,10 +5,15 @@ ProjectItinerary is a web-application development that showcases what individual
 
 ## INSTALLATION
 Github
+
 Clone the Repo
+
 git clone https://github.com/tczh/ProjectItinerary
+
 Open the zip file ProjectItinerary-Master, open the folder ProjectItineary-Master
+
 Copy the files (i.e index.php,  and place them in place the files in https://localhost/app
+
 Run SQL Tables_v5.2.sql in db 
 
 <!-- USAGE EXAMPLES -->
