@@ -570,7 +570,7 @@ function displayBoughtItinerary(userid){
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" onClick="processReview(${record['itineraryid']})">Submit Review</button>
+                                    <button type="button" class="btn btn-primary" onClick="processReview(${record['itineraryid']}); window.location.href='ProfilePage.php'">Submit Review</button>
                                 </div>
                             </form>
                         </div>
