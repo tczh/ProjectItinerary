@@ -1,6 +1,6 @@
 # ProjectItinerary
 
-ProjectItinerary is a web-application development that showcases what individual travellers wants.
+ProjectItinerary is a web-application development that showcases what individual travellers wants. People will be able to upload their past itineraries for different locations. In return, they get a small fee when another person purchases their itineraries. The website would be a one-stop portal for travellers to be able to look through other travellers’ itineraries. This helps them save time having to plan their inteinary. With this solution, it targets travellers who are too busy to plan their itinerary but wishes to go on a free and easy trip.
 
 
 ## INSTALLATION
