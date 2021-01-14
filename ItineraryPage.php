@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUK5A7DQz1wWMlQ98p9fqg2zIv-XQDCjc&callback=initMap&libraries=&v=weekly" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly" defer></script>
     <link rel="stylesheet" href="create_itinerary.css">
 
     <style>
@@ -354,7 +354,7 @@
                 activityArray: [],
                 commentsArray: [],
                 itineraryid: <?php echo $itineraryid ?>,
-                apiKey: 'AIzaSyCUK5A7DQz1wWMlQ98p9fqg2zIv-XQDCjc',
+                apiKey: '',
                 lat1: '',
                 lng1: '',
                 rate: 0,
